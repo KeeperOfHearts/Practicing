@@ -11,4 +11,10 @@ public interface MemberService {
     List<Roles> findAllRoles();
 
     List<Roles> getRolesOfMember(String memberId);
+
+    boolean isMemberPresent(String memberId);
+
+    void cleanUpMember(String memberId);
+
+    void deleteRoleOfMember(String memberId, String roleId);
 }

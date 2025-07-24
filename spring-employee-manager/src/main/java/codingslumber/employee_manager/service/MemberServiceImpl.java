@@ -9,6 +9,7 @@ import codingslumber.employee_manager.entity.Roles;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -37,6 +38,33 @@ public class MemberServiceImpl implements MemberService {
     public List<Roles> getRolesOfMember(String memberId) {
         return customDAO.getRolesOfMember(memberId);
     }
+
+    @Override
+    public boolean isMemberPresent(String memberId) {
+            Optional<Member> result = memberDAO.findById(memberId);
+
+            return result.isPresent();
+    }
+
+    @Override
+    public void cleanUpMember(String memberId) {
+        if (isMemberPresent(memberId)) {
+            customDAO.deleteMemberRoles(memberId);
+            memberDAO.deleteById(memberId);
+        } else {
+            throw new RuntimeException("Member with ID " + memberId + " does not exist.");
+        }
+    }
+
+    @Override
+    public void deleteRoleOfMember(String memberId, String roleId) {
+        if (isMemberPresent(memberId)) {
+            customDAO.deleteRoleOfMember(memberId, roleId);
+        } else {
+            throw new RuntimeException("Member with ID " + memberId + " does not exist.");
+        }
+    }
+
 
     // other methods can be added here as needed
 }

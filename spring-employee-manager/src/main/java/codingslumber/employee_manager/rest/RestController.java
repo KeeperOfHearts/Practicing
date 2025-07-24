@@ -40,6 +40,22 @@ public class RestController {
         return memberService.getRolesOfMember(memberId);
     }
 
+    @GetMapping("/isMemberPresent/{memberId}")
+    public boolean isMemberPresent(@PathVariable String memberId) {
+        return memberService.isMemberPresent(memberId);
+    }
+
+    @GetMapping("/cleanUpMember/{memberId}")
+    public void cleanUpMember(@PathVariable String memberId) {
+        memberService.cleanUpMember(memberId);
+    }
+
+    @GetMapping("/deleteRoleOfMember/{memberId}/{roleId}")
+    public String deleteRoleOfMember(@PathVariable String memberId, @PathVariable String roleId) {
+        memberService.deleteRoleOfMember(memberId, roleId);
+
+        return "Role with ID " + roleId + " has been deleted from member with ID " + memberId;
+    }
 
 }
 
