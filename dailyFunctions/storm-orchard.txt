@@ -1,0 +1,24 @@
+class StormImpact {
+    public static String stormImpact(String orchard, int intensity) {
+        String result = "";
+        char[] chars = orchard.toCharArray();
+        for (int i = 0;i<chars.length;i++ ) {
+            if (i % (10 - intensity) == 0) {
+                switch (chars[i]) {
+                    case 'A':
+                        result += "a";
+                        break;
+                    case 'a':
+                        result += "-";
+                        break;
+                    case '-':
+                        result += "-";
+                        break;
+                }
+            } else {
+                result += chars[i];
+            }
+        }
+        return result;
+    }
+}
