@@ -1,0 +1,40 @@
+class IsBacterialCode {
+    public static boolean isBacterialCode(int number, String substring) {
+        String numberStr = String.valueOf(number);
+        
+        if (!numberStr.contains(substring)) {
+            return false;
+        }
+        
+        int sum = 0;
+        for (char digit : numberStr.toCharArray()) {
+            sum += Character.getNumericValue(digit);
+        }
+        
+        return sum % 7 == 0;
+    }
+}
+
+Create a function named isBacterialCode that receives number and substring as its parameters.
+
+In the laboratory of an overlarge scientist studying Eubacteriales, a unique coding system has been developed to classify bacterial strains. This system, called the "Bacterial Code", is based on specific numerical properties.
+
+A number is considered a "Bacterial Code" if it satisfies two conditions:
+
+It contains the given substring.
+The sum of its digits is divisible by 7 (a number significant in microbiology due to bacterial growth patterns).
+Your task is to implement this classification system.
+
+Parameters:
+
+number (int): A positive integer to be checked.
+substring (String): A string to be searched for within the number.
+The function returns a boolean value: true if the number is a Bacterial Code, and false otherwise.
+
+Here's how to approach this problem:
+
+Convert the number to a string.
+Check if the string representation of the number contains the given substring.
+Calculate the sum of the digits in the number.
+Check if the sum is divisible by 7.
+Return true if both conditions are met, false otherwise.
