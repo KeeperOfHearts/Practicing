@@ -1,0 +1,14 @@
+class TransformStrings {
+    public static String transformStrings(String original, String modifier) {
+        return new StringBuilder(modifier).reverse().toString() + original;
+    }
+}
+
+
+Create a function named transformStrings that receives original and modifier as its parameters.
+
+The function should:
+
+Reverse the string original.
+Concatenate the reversed original string with the modifier string.
+Reverse the entire result of the concatenation.
