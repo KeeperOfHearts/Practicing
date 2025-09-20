@@ -1,0 +1,30 @@
+class MergeDroplets {
+    public static int[] mergeDroplets(int[] droplets) {
+        String result = "";
+
+        for (int i = 0;i < droplets.length - 1;i++) {
+            if (droplets[i] <= droplets[i+1]) {droplets[i+1] += droplets[i];}
+            else result += droplets[i] + " ";
+        }
+        int[] intResult = new int[result.length() /2 + 1];
+        intResult[intResult.length - 1] = droplets[droplets.length - 1];
+        int i = 0;
+        for (String el : result.split(" ")) {
+            if (el.equals("")) continue;
+            intResult[i++] = Integer.parseInt(el);
+        }
+
+        return intResult;
+    }
+}
+
+Create a function named mergeDroplets that receives int[] droplets as its parameter.
+
+The function simulates the process of water droplets forming and merging on a window pane. It takes an array representing the initial sizes of water droplets and merges them based on a simple rule, mimicking the calm observation of condensation patterns.
+
+The merging process follows this rule: If a droplet is smaller than or equal to its right neighbor, it merges with that neighbor, creating a new droplet with the combined size. This process is performed from left to right, updating the array as it goes. The merging continues until no more merges are possible (i.e., each droplet is larger than its right neighbor or it's the rightmost droplet).
+
+Parameters:
+
+droplets (int[]): An array representing the initial sizes of water droplets.
+The function returns an integer array representing the sizes of the droplets after all possible merges have occurred.
