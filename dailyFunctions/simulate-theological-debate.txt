@@ -1,0 +1,42 @@
+import java.util.ArrayList;
+
+class SimulateTheologicalDebate {
+    public static String[] simulateTheologicalDebate(String[] arguments, int maxRebuttals) {
+        ArrayList<String> result = new ArrayList<String>();
+
+        for (String arg : arguments) {
+            if (arg.length() < 5) continue;
+            if (arg.contains("God") || arg.contains("faith")) arg = arg.toUpperCase();
+            result.add(arg);
+            if (result.size() >= maxRebuttals) break;
+        }
+
+        return result.toArray(new String[0]);
+    }
+}
+
+Create a function named simulateTheologicalDebate that receives String[] arguments and int maxRebuttals as its parameters.
+
+The function simulates a spirited theological debate in a university lecture hall by processing an array of arguments. It should manipulate the array and use control flow to represent the flow of the debate.
+
+The function should process the arguments as follows:
+
+Remove any argument that is less than 5 characters long (considered too weak).
+Capitalize any argument that contains the word "God" or "faith" (case-insensitive, considered emphatic points).
+Stop the debate if the number of processed arguments exceeds maxRebuttals.
+Parameters:
+
+arguments (String[]): An array of strings representing different theological points.
+maxRebuttals (int): An integer representing the maximum number of back-and-forth exchanges allowed in the debate.
+The function returns a String array representing the processed arguments after the debate simulation.
+
+Here's an example of how you might approach this:
+
+
+public static String[] simulateTheologicalDebate(String[] arguments, int maxRebuttals) {
+    // Your code here
+    // Remember to use array manipulation and control flow (break or continue)
+    // to process the arguments according to the rules
+    // Return the processed array
+}
+Remember to handle the case sensitivity when checking for "God" or "faith" in the arguments. Also, ensure that you're correctly implementing the early termination of the debate when the number of processed arguments exceeds maxRebuttals.
