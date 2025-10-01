@@ -1,0 +1,29 @@
+class CountStars {
+    public static int[] countStars(int[] sky, int maxCount) {
+        int[] result = new int[sky.length];
+        boolean max = false;
+        int count = 0;
+        for (int i = 0;i < sky.length;i++) {
+            if (max) {
+                result[i] = 0;
+                continue;
+            }
+            result[i] = sky[i];
+            if (sky[i] == 1) count++; 
+            if (count == maxCount) max = true;
+        }
+        return result;
+    }
+}
+
+Create a function named countStars that receives sky and maxCount as its parameters.
+
+The function simulates counting stars in a night sky over a peaceful forest glade. It should count the stars until either the end of the sky is reached or the maximum count is achieved.
+
+Loop through the array, counting the stars (represented by 1s) until either the end of the array is reached or the maximum count is achieved. If the maximum count is reached before the end of the array, replace all remaining elements with 0s, simulating falling asleep and no longer seeing stars.
+
+Parameters:
+
+sky (int[]): An array representing the night sky, where each element is either 0 (no star) or 1 (star).
+maxCount (int): The maximum number of stars to count before falling asleep.
+The function returns the modified int[] representing the night sky after the counting session.
