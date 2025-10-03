@@ -1,0 +1,58 @@
+import java.text.DecimalFormat;
+
+class GraduationTaxiReceipt {
+    public static String graduationTaxiReceipt(float distance, int duration, String graduateName, String schoolName) {
+        DecimalFormat df = new DecimalFormat("#.##");
+        
+        double baseFare = 3.00;
+        double perMileCharge = 2.50;
+        double perMinuteCharge = 0.50;
+        double discountPercentage = 0.10;
+        
+        double distanceCost = distance * perMileCharge;
+        double durationCost = duration * perMinuteCharge;
+        double totalFare = baseFare + distanceCost + durationCost;
+        double discountAmount = totalFare * discountPercentage;
+        double discountedFare = totalFare - discountAmount;
+        
+        StringBuilder receipt = new StringBuilder();
+        receipt.append("Congratulations to " + graduateName + " on graduating from " + schoolName + "!\n\n");
+        receipt.append("Trip Details:\n");
+        receipt.append("Distance: " + df.format(distance) + " miles\n");
+        receipt.append("Duration: " + duration + " minutes\n\n");
+        receipt.append("Fare Breakdown:\n");
+        receipt.append("Base Fare: $" + df.format(baseFare) + "\n");
+        receipt.append("Distance Charge: $" + df.format(distanceCost) + "\n");
+        receipt.append("Duration Charge: $" + df.format(durationCost) + "\n");
+        receipt.append("Total Fare: $" + df.format(totalFare) + "\n\n");
+        receipt.append("Graduation Special Discount (10%): $" + df.format(discountAmount) + "\n");
+        receipt.append("Discounted Fare: $" + df.format(discountedFare) + "\n");
+        
+        return receipt.toString();
+    }
+}
+
+
+Create a function named graduationTaxiReceipt that receives distance, duration, graduateName, and schoolName as its parameters.
+
+The function should calculate a taxi fare for a proud father who just attended his child's graduation ceremony and generate a formatted receipt.
+
+Calculate the fare based on the following rules:
+
+Base fare: $3.00
+Per mile charge: $2.50
+Per minute charge: $0.50
+Graduation special discount: 10% off the total fare
+The function should return a string representing the formatted receipt, including:
+
+A congratulatory message
+The trip details (distance and duration)
+The fare breakdown
+The total fare before and after the discount
+Parameters:
+
+distance (float): The distance traveled in miles
+duration (int): The duration of the trip in minutes
+graduateName (String): The name of the graduating child
+schoolName (String): The name of the school
+The function returns a string containing the formatted taxi receipt.
