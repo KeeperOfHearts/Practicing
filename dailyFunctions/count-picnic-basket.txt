@@ -1,0 +1,32 @@
+class CountPicnicBaskets {
+    public static int countPicnicBaskets(int[][] picnicBlanket, int startRow, int endRow, int startCol, int endCol) {
+        int count = 0;
+        for (int row = startRow; row <= endRow; row++) {
+            for (int col = startCol; col <= endCol; col++) {
+                if (picnicBlanket[row][col] == 1) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
+
+Create a function named countPicnicBaskets that receives picnicBlanket, startRow, endRow, startCol, and endCol as its parameters.
+
+This function aims to count the number of picnic baskets present in a specific rectangular section of a picnic blanket represented by a 2D integer array.
+
+Imagine you're at a peaceful picnic in a park with your family and friends. You've laid out a large blanket on the ground, and each person has placed their picnic basket on the blanket. The blanket is represented by a 2D integer array called picnicBlanket, where each inner array represents a row of the blanket. A 0 represents an empty spot, and a 1 represents a spot occupied by a picnic basket.
+
+You decide to play a game where you want to count the number of picnic baskets present in a specific rectangular section of the blanket. The section is defined by the starting and ending row indices (startRow and endRow) and the starting and ending column indices (startCol and endCol).
+
+To solve this challenge, you need to iterate over the specified section of the picnicBlanket array and count the number of 1s encountered. You can use nested loops to traverse the rows and columns within the given range and increment a counter variable whenever a 1 is found.
+
+Parameters:
+
+picnicBlanket (int[][]): A 2D integer array representing the picnic blanket, where 0 represents an empty spot and 1 represents a spot occupied by a picnic basket.
+startRow (int): The starting row index of the section to count picnic baskets.
+endRow (int): The ending row index of the section to count picnic baskets.
+startCol (int): The starting column index of the section to count picnic baskets.
+endCol (int): The ending column index of the section to count picnic baskets.
+The function returns an integer representing the total number of picnic baskets within the specified section of the picnicBlanket.
