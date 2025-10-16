@@ -1,0 +1,27 @@
+class GenerateRehearsalSchedule {
+    public static String[] generateRehearsalSchedule(int numberOfGroups, int availableDays) {
+        String[] result = new String[availableDays];
+        for (int i = 1;i<= numberOfGroups && i <= availableDays;i++) {
+            result[i-1] = String.format("Day %d: Group %d", i, i);
+        }
+        for (int i = numberOfGroups+1;i<= availableDays;i++) {
+            result[i-1] = String.format("Day %d: No rehearsal", i);
+        }
+
+        return result;
+    }
+}
+
+Create a function named generateRehearsalSchedule that receives numberOfGroups and availableDays as its parameters.
+
+The function should generate a rehearsal schedule for musical groups in a small-town community center.
+
+Use nested loops and basic logical operators to create a schedule where each group gets to rehearse on different days. If there are more groups than available days, some groups will have to share days.
+
+Parameters:
+
+numberOfGroups (int): The number of musical groups (1 to 5)
+availableDays (int): The number of days available for rehearsals (1 to 7)
+The function returns a string array representing the rehearsal schedule. Each string in the array should follow the format "Day X: Group Y" or "Day X: No rehearsal" if no group is scheduled for that day.
+
+Handle cases where there might be more groups than days or vice versa. Ensure that each group gets a fair chance to rehearse, and distribute the rehearsal slots as evenly as possible.
