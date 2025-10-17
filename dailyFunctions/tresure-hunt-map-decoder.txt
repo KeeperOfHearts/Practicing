@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+
+class FindTreasure {
+    public static int findTreasure(int[] map, int start) {
+        ArrayList<Integer> visited = new ArrayList<Integer>();
+        int current = start;
+        while (true) {
+            if (current < 0 || current >= map.length) return -1;
+            if (visited.contains(current)) return current;
+            visited.add(current);
+            current = map[current];
+        }
+    }
+}
+
+
+Create a function named findTreasure that receives map and start as its parameters.
+
+This function aims to find the location of a hidden treasure by deciphering a series of coded instructions represented by an array of integers.
+
+The map array contains a series of integers, where each element represents the index of the next position to move to. The start parameter indicates the starting index in the map array.
+
+To find the treasure, follow these steps:
+
+Begin at the index specified by start in the map array.
+Follow the instruction at the current index, which leads to the next index to move to.
+Continue following the instructions until one of the following conditions is met:
+The next index is out of bounds (i.e., it exceeds the size of the map array).
+The next index has already been visited, indicating a loop in the instructions.
+If the next index is out of bounds, return -1 to indicate an error.
+If a loop is detected, return the index where the loop starts, as it represents the location of the treasure.
+Parameters:
+
+map (int[]): An array of integers representing the coded instructions to reach the treasure. Each element in the array indicates the index of the next position to move to.
+start (int): An integer representing the starting index in the map array.
+The function returns an integer representing the index where the treasure is located. If the instructions lead to an index out of bounds, the function returns -1 to indicate an error.
