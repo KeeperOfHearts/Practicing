@@ -1,0 +1,25 @@
+class ReverseTeaArray {
+    public static int[] reverseTeaArray(int[] seatNumbers) {
+        int length = seatNumbers.length;
+        int[] result = new int[length];
+        for (int i = length-1;i >= 0;i--) {
+            result[length - i - 1] = seatNumbers[i]; 
+        }
+        return result;
+    }
+}
+
+Create a function named reverseTeaArray that receives seatNumbers as its parameter.
+
+This function reverses the order of seat numbers in the array.
+
+Parameters:
+
+    seatNumbers (int[]): An array of integers representing the current order of seat numbers.
+
+The function should return an integer array (int[]) with the seat numbers in reversed order.
+
+Constraints:
+
+    The seatNumbers array will contain at least 1 and at most 20 seat numbers.
+    Each seat number in the seatNumbers array is a unique positive integer.
