@@ -1,0 +1,31 @@
+class HaveEnoughSandwiches {
+    public static boolean haveEnoughSandwiches(int[] sandwiches, int totalSandwiches) {
+        int totalRequested = sum(sandwiches);
+        return totalRequested <= totalSandwiches;
+    }
+    
+    private static int sum(int[] arr) {
+        int sum = 0;
+        for (int num : arr) {
+            sum += num;
+        }
+        return sum;
+    }
+}
+
+Create a function named haveEnoughSandwiches that receives sandwiches and totalSandwiches as its parameters.
+
+This function aims to determine if you have enough sandwiches for everyone at the picnic.
+
+You are preparing for a delightful summer picnic in the park and need to pack enough sandwiches for everyone. The sandwiches array represents the number of sandwiches each person wants. The totalSandwiches represents the total number of sandwiches you have prepared.
+
+To solve this challenge, you need to:
+
+Calculate the total number of sandwiches requested by summing up all the values in the sandwiches array.
+Compare the total sandwiches requested with the totalSandwiches you have.
+If the total requested is less than or equal to the total you have, return true. Otherwise, return false.
+Parameters:
+
+sandwiches (int[]): An array of integers representing the number of sandwiches each person wants.
+totalSandwiches (int): An integer representing the total number of sandwiches you have prepared.
+The function returns a boolean value. It should return true if you have enough sandwiches for everyone, and false if you don't have enough.
