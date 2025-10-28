@@ -1,0 +1,32 @@
+function decodeMessage(binaryMessage) {
+  const binaryNumbers = binaryMessage.split(' ');
+  const decimalNumbers = binaryNumbers.map(binary => parseInt(binary, 2));
+  const decodedLetters = decimalNumbers.map(decimal => {
+    if (decimal === 32) {
+      return ' ';
+    } else {
+      return String.fromCharCode(decimal + 64);
+    }
+  });
+  const decodedMessage = decodedLetters.join('');
+  return decodedMessage;
+}
+
+Create a function named decodeMessage that receives binaryMessage as its parameter.
+
+This function decodes a binary message into readable text using a substitution cipher where each letter is replaced by its numerical value in the alphabet (A=1, B=2, ..., Z=26) in binary format.
+
+Steps to decode:
+
+    Split the binary message into individual binary numbers.
+    Convert each binary number to its decimal equivalent.
+    Map the decimal values to their corresponding letters in the alphabet (1=A, 2=B, ..., 26=Z).
+    Concatenate the decoded letters to form the original message.
+
+Note: Spaces are represented by the binary value 00100000.
+
+Parameter:
+
+    binaryMessage (string): The binary encoded message to be decoded.
+
+The function returns the decoded message as a string.
