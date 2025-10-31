@@ -1,0 +1,42 @@
+class CountCircularObjects {
+    public static String countCircularObjects(String action, String objectType, int count) {
+        if (action.equals("remove")) {
+            if (objectType.equals("lens")) return "Error: Not enough lenses to remove.";
+            return "Error: Not enough "+objectType+"s to remove.";
+        }
+        
+        int balls = 0;
+        int coins = 0;
+        int lenses = 0;
+        switch (objectType) {
+            case "coin":
+                coins = count;
+                break;
+            case "ball":
+                balls = count;
+                break;
+            case "lens":
+                lenses = count;
+                break;
+        }
+        return String.format("Current counts: balls = %d, coins = %d, lenses = %d", balls, coins, lenses);
+    }
+}
+
+Create a function named countCircularObjects that receives action, objectType, and count as parameters.
+
+This function manages counts of circular objects (balls, coins, lenses) in a photography exhibit. It starts with zero counts for all objects. Based on the action ('add' or 'remove') and objectType, it updates the count. If 'remove' is requested and there are not enough objects, it returns an error message. The function returns a message indicating the current counts of all objects after the operation.
+
+Parameters:
+
+    action (String): 'add' or 'remove'.
+    objectType (String): 'ball', 'coin', or 'lens'.
+    count (int): Number of items to add or remove.
+
+The function returns a String message indicating the current counts of all objects after each operation.
+
+Constraints:
+
+    action will be 'add' or 'remove'.
+    objectType will be 'ball', 'coin', or 'lens'.
+    count will be a positive integer.
