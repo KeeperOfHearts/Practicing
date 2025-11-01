@@ -1,0 +1,22 @@
+class ReverseElement {
+    public static String reverseElement(String elementName) {
+        String reversed = new StringBuilder(elementName).reverse().toString();
+        return reversed.substring(0, 1).toUpperCase() + reversed.substring(1).toLowerCase();
+    }
+}
+
+Create a function named reverseElement that receives elementName as its parameter.
+
+You are a curious chemist working in a peaceful laboratory filled with colorful solutions and gleaming glassware. Your latest experiment involves reversing the names of chemical elements with a special twist.
+
+Your task is to reverse the input string (the name of a chemical element) and modify it as follows:
+
+    Reverse the entire string.
+    Capitalize the first letter of the reversed string.
+    Convert the rest of the letters to lowercase.
+
+Parameters:
+
+    elementName (String): The name of a chemical element. It will contain only alphabetic characters and will have a length between 1 and 100 characters.
+
+The function returns a String, which is the reversed and modified element name.
