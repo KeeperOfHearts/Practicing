@@ -1,0 +1,16 @@
+class Main {
+    public static void main(String[] args) {
+        // Write code here
+        String us = "United States";
+        int population = 331002651;
+        // Don't change below this line
+        System.out.println("us = " + us);
+        System.out.println("population = " + population);
+    }
+}
+
+
+Initialize the following variables:
+
+    us: String with value "United States"
+    population: int with value 331002651
