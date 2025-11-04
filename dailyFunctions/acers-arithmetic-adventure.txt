@@ -1,0 +1,22 @@
+class Main {
+    public static void main(String[] args) {
+        // Write code here
+        int num1 = 7;
+        int num2 = 4;
+        int sum = 11;
+        int difference = 3;
+        int product = 28;
+        int quotient = 1;
+
+
+        // Don’t change below this line
+        System.out.println("num1 = " + num1);
+        System.out.println("num2 = " + num2);
+        System.out.println("sum = " + sum);
+        System.out.println("difference = " + difference);
+        System.out.println("product = " + product);
+        System.out.println("quotient = " + quotient);
+    }
+}
+
+Initialize two int variables num1 and num2 with values 7 and 4. Also, initialize variables for their sum, difference, product, and quotient.
