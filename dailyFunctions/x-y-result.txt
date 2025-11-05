@@ -1,0 +1,14 @@
+class Main {
+    public static void main(String[] args) {
+        // Write code here
+        int x = 5;
+        int y = 10;
+        int result = 15;
+        // Don't change below this line
+        System.out.println("x = " + x);
+        System.out.println("y = " + y);
+        System.out.println("result = " + result);
+    }
+}
+
+Initialize two int variables x and y with values 5 and 10. Then, create another int variable result to hold their sum.
