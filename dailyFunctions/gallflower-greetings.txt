@@ -1,0 +1,8 @@
+class Main {
+    public static void main(String[] args) {
+        String output = "Greetings, Gallflower!";
+        System.out.println(output);
+    }
+}
+
+Write a program that initializes a String variable with "Greetings, Gallflower!" and prints it.
