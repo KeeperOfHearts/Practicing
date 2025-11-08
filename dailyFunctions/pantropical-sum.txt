@@ -1,0 +1,12 @@
+class Main {
+    public static void main(String[] args) {
+        // Write code here
+        int num1 = 3;
+        int num2 = 5;
+        int sum = num1 + num2;
+        // Don't change below this line
+        System.out.println("sum = " + sum);
+    }
+}
+
+Initialize num1 to 3 and num2 to 5. Calculate their sum and store it in sum.
