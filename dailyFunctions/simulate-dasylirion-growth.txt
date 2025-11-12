@@ -1,0 +1,60 @@
+import java.text.DecimalFormat;
+
+class SimulateDasylirionGrowth {
+    public static String simulateDasylirionGrowth(int initialHeight, int days, int dailyGrowth, int waterSupply) {
+        double currentHeight = initialHeight;
+        int remainingWater = waterSupply;
+        DecimalFormat df = new DecimalFormat("#.##");
+
+        for (int day = 0; day < days; day++) {
+            if (remainingWater > 0) {
+                currentHeight += dailyGrowth / 10.0;
+                remainingWater -= 50;
+            } else {
+                break;
+            }
+        }
+
+        if (remainingWater < 0) {
+            remainingWater = 0;
+        }
+
+        String finalHeight = df.format(currentHeight);
+        String message = "";
+
+        if (currentHeight > initialHeight * 1.5) {
+            message = "Hoot hoot! The Dasylirion has grown impressively tall!";
+        } else if (currentHeight > initialHeight * 1.2) {
+            message = "Hoot! The Dasylirion has shown good growth.";
+        } else {
+            message = "Hoot... The Dasylirion's growth was limited.";
+        }
+
+        return "Final height: " + finalHeight + " cm, Remaining water: " + remainingWater + " ml. " + message;
+    }
+}
+
+Create a function named simulateDasylirionGrowth that receives initialHeight, days, dailyGrowth, and waterSupply as its parameters.
+
+The function simulates the growth of a Dasylirion plant observed by a night owl near a spring. It should use a loop to simulate the plant's growth over a specified number of days, considering the daily growth rate and water consumption.
+
+Follow these steps to implement the function:
+
+    Use a loop to iterate through each day of the simulation.
+    Increment the plant's height by the daily growth rate (converting millimeters to centimeters).
+    Decrease the water supply by 50 milliliters per day (the plant's water consumption).
+    If the water supply reaches 0, stop the plant's growth for the remaining days.
+    Use basic increment and decrement operators to update the plant's height and water supply.
+
+Parameters:
+
+    initialHeight (int): The initial height of the Dasylirion plant in centimeters.
+    days (int): The number of days to simulate the growth.
+    dailyGrowth (int): The daily growth of the plant in millimeters.
+    waterSupply (int): The initial water supply from the spring in milliliters.
+
+The function returns a string message with the following information:
+
+    The final height of the plant in centimeters (rounded to 2 decimal places)
+    The remaining water supply in milliliters
+    A message from the owl's perspective about the plant's growth
