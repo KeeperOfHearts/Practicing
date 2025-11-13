@@ -1,0 +1,27 @@
+class CountStars {
+    public static String countStars(int initialStars, int minutes) {
+        String result = "Initial stars: " + initialStars + "\n";
+        result += "Final stars: " + (initialStars + minutes) + "\n";
+        result += "Minutes spent: " + minutes + "\n";
+        result += "Stars: " + "*".repeat(initialStars + minutes);
+        return result;
+    }
+}
+
+Create a function named countStars that receives initialStars and minutes as its parameters.
+
+The function simulates a stargazer counting stars in the night sky on a barren hilltop. For each minute that passes, the stargazer sees one more star.
+
+Use basic increment operators to increase the star count and basic string formatting to create the output message.
+
+Parameters:
+
+    initialStars (int): The number of stars visible at the beginning of the observation.
+    minutes (int): The number of minutes spent stargazing.
+
+The function returns a formatted string describing the stargazing experience. The string should include:
+
+    The initial number of stars
+    The final number of stars
+    The number of minutes spent stargazing
+    A simple ASCII art representation of stars (use asterisks *)
