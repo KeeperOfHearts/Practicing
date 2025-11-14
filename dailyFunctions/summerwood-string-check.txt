@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        
+        if (input.contains("summer")) {System.out.println("Contains 'summer'");}
+        else System.out.println("Does not contain 'summer'");
+    }
+}
+
+Given a string input, check if it contains the word 'summer'.
+
+Print "Contains 'summer'" if it does, otherwise print "Does not contain 'summer'".
