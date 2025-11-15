@@ -1,0 +1,9 @@
+class Main {
+    public static void main(String[] args) {
+        int temperature = 25;
+        // Write code here
+        if (temperature > 19 && temperature < 31) System.out.println("The temperature is perfect for a bilboquet game!");
+    }
+}
+
+Write a program that checks if the temperature is between 20 and 30 degrees inclusive and prints a message indicating it is perfect for playing bilboquet.
