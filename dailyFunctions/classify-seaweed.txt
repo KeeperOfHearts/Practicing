@@ -1,0 +1,27 @@
+class ClassifySeaweed {
+    public static String classifySeaweed(int length, int branches, boolean hasAirBladders) {
+        if (length > 50 && branches > 10) return "Rhexia";
+        if (hasAirBladders || length < 30) return "Desmarestia";
+        if (branches > 4) return "Unknown Species A";
+        return "Unknown Species B";
+    }
+}
+
+Create a function named classifySeaweed that receives length, branches, and hasAirBladders as its parameters.
+
+As a botanist at a coastal research station, you're tasked with classifying seaweed specimens based on their characteristics. Your function should return a string that classifies the seaweed into one of four categories: "Rhexia", "Desmarestia", "Unknown Species A", or "Unknown Species B".
+
+Use the following classification rules:
+
+    If the seaweed is longer than 50 cm AND has more than 10 branches, classify it as "Rhexia".
+    If the seaweed has air bladders OR is shorter than 30 cm, classify it as "Desmarestia".
+    If the seaweed is between 30 and 50 cm (inclusive) AND has 5 to 10 branches (inclusive), classify it as "Unknown Species A".
+    For all other cases, classify it as "Unknown Species B".
+
+Parameters:
+
+    length (int): The length of the seaweed in centimeters.
+    branches (int): The number of branches the seaweed has.
+    hasAirBladders (boolean): Indicates whether the seaweed has air bladders (true) or not (false).
+
+The function returns a String representing the classification of the seaweed specimen.
