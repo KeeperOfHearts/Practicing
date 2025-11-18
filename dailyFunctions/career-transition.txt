@@ -1,0 +1,35 @@
+class CareerTransition {
+    public static String careerTransition(int days) {
+        if (days >= 15) return "The shoesmith wrote 130 lines of code and learned 5 programming concepts.";
+        return String.format("The shoesmith wrote %d lines of code and learned %d programming concepts.", (int) (days-days/7)*10, days/3);
+    }
+}
+
+Create a function named careerTransition that receives days as its parameter.
+
+The function simulates a shoesmith's transition to a new career as a programmer. It tracks the shoesmith's progress in learning programming concepts over a given number of days.
+
+Use a loop to iterate through the days, employing basic control flow (break, continue) and increment/decrement operators to track the shoesmith's progress. The challenge focuses on using these basic concepts to create a narrative of the shoesmith's journey.
+
+Parameters:
+
+    days (int): The number of days since the shoesmith started learning programming.
+
+The function returns a String describing the shoesmith's progress in learning programming concepts.
+
+Follow these steps to implement the function:
+
+    Initialize variables to track the shoesmith's progress (e.g., lines of code written, concepts learned).
+    Use a loop to iterate through the days.
+    For each day, increment or decrement progress variables based on certain conditions.
+    Use break or continue statements to simulate setbacks or breakthroughs in the learning process.
+    After the loop, return a string that summarizes the shoesmith's progress.
+
+Implement the following logic in your function:
+
+    Every day, the shoesmith writes 10 lines of code.
+    Every 3 days, the shoesmith learns a new concept.
+    If the day is divisible by 7, the shoesmith takes a break and doesn't code (use continue).
+    If the shoesmith has learned 5 concepts, they have a breakthrough and the learning process ends (use break).
+
+The returned string should include the total lines of code written and the number of concepts learned.
