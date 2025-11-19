@@ -1,0 +1,23 @@
+class AdjustAmchoorAmount {
+    public static int adjustAmchoorAmount(int currentAmount, int adjustment) {
+        return Math.min(100, currentAmount+adjustment);
+    }
+}
+
+Create a function named adjustAmchoorAmount that receives currentAmount and adjustment as its parameters.
+
+You are a chef in a minimalist kitchen, experimenting with amchoor spice to perfect your dish. Your task is to create a function that adjusts the amount of amchoor spice based on the current amount and a given adjustment value.
+
+The function should increase or decrease the amount of amchoor based on the adjustment value, but with some constraints to reflect your careful experimentation:
+
+    The amount of amchoor should never go below 0 grams (you can't have negative spice!).
+    The maximum amount of amchoor should be limited to 100 grams (to prevent over-spicing).
+
+Parameters:
+
+    currentAmount (int): The current amount of amchoor spice in grams.
+    adjustment (int): The adjustment value. A positive value means adding more spice, while a negative value means reducing the amount.
+
+The function returns an integer representing the new amount of amchoor after the adjustment, ensuring it stays within the range of 0 to 100 grams.
+
+Use increment (++) or decrement (--) operators at least once in your solution to practice these basic operators.
