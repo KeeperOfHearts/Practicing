@@ -1,0 +1,51 @@
+class GenerateFrugalReport {
+    public static String generateFrugalReport(String name, int budget, int spent) {
+        double percent = (budget-spent+0.0)/budget*100;
+        
+        String result = String.format("Frugal Student Report for %s:\n%s was frugal today.\nAmount saved: $%d\nPercentage of budget saved: %d%%", name, name, budget-spent, (int) percent);
+        if ((int)(percent*100) != ((int) percent)*100) result = String.format("Frugal Student Report for %s:\n%s was frugal today.\nAmount saved: $%d\nPercentage of budget saved: %.2f%%", name, name, budget-spent, percent);
+        if (spent > budget) {
+            return result.replace("frugal", "not frugal") + "\nBe more careful with your spending.";
+        } else if (percent > 50) {
+            return result + "\nExcellent frugality!";
+        } else if (percent >= 20) {
+            return result + "\nGood job saving!";
+        } 
+        return result + "\nTry to save more next time.";
+
+    }
+}
+
+Create a function named generateFrugalReport that receives name, budget, and spent as its parameters.
+
+The function should generate a "Frugal Student Report" based on a student's daily spending and savings. This report will help students track their frugal lifestyle while pursuing their baccalaureate degree.
+
+The function should perform the following tasks:
+
+    Calculate the amount saved (budget - spent)
+    Determine if the student was frugal (spent less than or equal to the budget)
+    Calculate the percentage of the budget saved
+    Generate a report string that includes all this information
+
+The report should include the following information:
+
+    Student's name
+    Whether they were frugal or not
+    Amount saved
+    Percentage of budget saved (rounded to two decimal places)
+    A special message based on their frugality
+
+Parameters:
+
+    name (String): The name of the student.
+    budget (int): The student's daily budget in dollars.
+    spent (int): The actual amount spent in dollars.
+
+The function returns a string containing the "Frugal Student Report".
+
+Special messages based on frugality:
+
+    If the student saved more than 50% of their budget: "Excellent frugality!"
+    If the student saved between 20% and 50% of their budget: "Good job saving!"
+    If the student saved between 0% and 20% of their budget: "Try to save more next time."
+    If the student overspent: "Be more careful with your spending."
