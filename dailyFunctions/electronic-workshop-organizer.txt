@@ -1,0 +1,62 @@
+class OrganizeWorkshop {
+    public static String organizeWorkshop(String[] components, float benchWidth, float benchDepth) {
+        int resistors = 0;
+        int capacitors = 0;
+        int other = 0;
+        
+        for (String component : components) {
+            if (component == null || component.isEmpty()) {
+                continue;
+            }
+            
+            String lowerComponent = component.toLowerCase();
+            
+
+            if (lowerComponent.contains("lead") || lowerComponent.contains("mercury")) {
+                break;
+            }
+            
+
+            if (lowerComponent.contains("resistor") || lowerComponent.contains("ohm")) {
+                resistors++;
+            } else if (lowerComponent.contains("capacitor") || lowerComponent.contains("ceramic") || lowerComponent.contains("electrolytic")) {
+                capacitors++;
+            } else {
+                other++;
+            }
+        }
+        
+
+        float optimalAngle = (benchWidth / benchDepth) * 15;
+        String formattedAngle = String.format("%.1f", optimalAngle);
+        
+        return String.format("Resistors: %d, Capacitors: %d, Other: %d, Optimal Angle: %s degrees", 
+                           resistors, capacitors, other, formattedAngle);
+    }
+}
+
+Write a function organizeWorkshop that takes components, benchWidth, benchDepth and returns a workshop organization report.
+
+The function categorizes electronic components by type, calculates optimal workbench angle, and generates an inventory summary.
+
+Logic:
+
+    Iterate through components, categorizing into "Resistors", "Capacitors", and "Other" based on name content
+    Use continue to skip empty/null components, break when finding prohibited materials ("lead", "mercury")
+    Calculate optimal angle: (benchWidth / benchDepth) * 15 degrees, rounded to 1 decimal
+    Generate report with category counts and angle
+
+Conditions:
+
+    Skip components containing "lead" or "mercury" (case-insensitive) - stop processing when found
+    Resistors: contain "resistor" or "ohm" (case-insensitive)
+    Capacitors: contain "capacitor", "ceramic", or "electrolytic" (case-insensitive)
+    Everything else goes to "Other"
+
+Parameters:
+
+    components (String[]): Array of component names
+    benchWidth (float): Workbench width in inches
+    benchDepth (float): Workbench depth in inches
+
+Returns: Workshop organization report. Format: Resistors: X, Capacitors: Y, Other: Z, Optimal Angle: A.B degrees
