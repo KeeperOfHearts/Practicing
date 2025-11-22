@@ -1,0 +1,22 @@
+class CalculateSunscreenBottles {
+    public static int calculateSunscreenBottles(int totalHours, int usagePerHour) {
+        return (int) Math.ceil(totalHours*usagePerHour/100.0);
+    }
+}
+
+Create a function named calculateSunscreenBottles that receives totalHours and usagePerHour as parameters.
+
+This function calculates the number of full sunscreen bottles needed for a beach trip based on the total hours spent at the beach and the amount of sunscreen used per hour.
+
+Steps:
+
+    Multiply totalHours by usagePerHour to get the total amount of sunscreen needed in milliliters.
+    Divide the total amount of sunscreen by the capacity of each bottle (100 ml) to get the number of bottles.
+    Round up the result to the nearest whole number.
+
+Parameters:
+
+    totalHours (int): Total hours at the beach.
+    usagePerHour (int): Amount of sunscreen in milliliters used per hour.
+
+The function returns an integer representing the number of full sunscreen bottles needed.
