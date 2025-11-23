@@ -1,0 +1,25 @@
+class GenerateProjectCode {
+    public static String generateProjectCode(String projectTitle, String category) {
+        String first3 = projectTitle.substring(0, Math.min(3, projectTitle.length()));
+        String last2 = projectTitle.substring(Math.max(0, projectTitle.length()-2));
+        return String.format("%s-%s%s-%d", category, first3, last2, first3.length() + last2.length());
+    }
+}
+
+Write a function generateProjectCode that takes projectTitle, category and returns a standardized project identifier code.
+
+The function creates project codes by extracting the first 3 characters and last 2 characters from the project title, calculating their combined length, and formatting everything with the category prefix.
+
+Logic:
+
+    Extract first 3 characters from project title (or all characters if title is shorter than 3)
+    Extract last 2 characters from project title (or all characters if title is shorter than 2)
+    Calculate the total length of both extracted substrings combined
+    Format as: category prefix + "-" + first substring + last substring + "-" + total length
+
+Parameters:
+
+    projectTitle (String): The science fair project title
+    category (String): The project category (e.g., "PHYS", "BIO", "CHEM")
+
+Returns: A formatted project code string. Format: CATEGORY-firstSubstringlastSubstring-totalLength
