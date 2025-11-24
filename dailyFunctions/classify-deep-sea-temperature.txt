@@ -1,0 +1,31 @@
+class ClassifyDeepSeaTemperature {
+    public static String classifyDeepSeaTemperature(float temperature) {
+        if (temperature < 2) {
+            return "Extremely Cold";
+        } else if (temperature<=4) {
+            return "Cold";
+        } else if (temperature<6) {
+            return "Moderate";
+        } else  {
+            return "Warm";
+        }
+    }
+}
+
+
+Create a function named classifyDeepSeaTemperature that receives temperature as its parameter.
+
+As a scientist on a deep-sea expedition, you're using advanced thermometric equipment to measure ocean temperatures near a sunken research vessel. Your task is to classify the temperature readings into different categories.
+
+Implement the function to classify the deep-sea temperature based on the following criteria:
+
+    If the temperature is below 2°C, classify it as "Extremely Cold"
+    If the temperature is between 2°C and 4°C (inclusive), classify it as "Cold"
+    If the temperature is above 4°C and below 6°C, classify it as "Moderate"
+    If the temperature is 6°C or above, classify it as "Warm"
+
+Parameters:
+
+    temperature (float): The temperature reading in Celsius from the deep-sea thermometric equipment.
+
+The function returns a String representing the classification of the deep-sea temperature.
