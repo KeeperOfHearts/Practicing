@@ -1,0 +1,83 @@
+import java.util.ArrayList;
+
+class ApplyTopcoat {
+    public static String applyTopcoat(int roomLength, int roomWidth, float coatAvailable) {
+        int roomArea = roomLength * roomWidth;
+        float coatNeeded = roomArea / 100.0f;
+        ArrayList<String> progressUpdates = new ArrayList<>();
+        
+        StringBuilder result = new StringBuilder();
+        result.append(String.format("Room area: %d sq ft\n", roomArea));
+        result.append(String.format("Topcoat needed: %.2f gallons\n", coatNeeded));
+        
+        int coatedArea = 0;
+        int rowsCoated = 0;
+        
+        while (coatAvailable > 0 && coatedArea < roomArea) {
+            if (coatAvailable >= roomWidth / 100.0f) {
+                coatedArea += roomWidth;
+                coatAvailable -= roomWidth / 100.0f;
+                rowsCoated++;
+                progressUpdates.add(String.format("Row %d coated. %.2f gallons remaining.", rowsCoated, coatAvailable));
+            } else {
+                break;
+            }
+        }
+        
+        for (String update : progressUpdates) {
+            result.append(update).append("\n");
+        }
+        
+        if (coatedArea >= roomArea) {
+            result.append(String.format("Floor coating complete. Used %.2f gallons of topcoat.", coatNeeded));
+        } else {
+            int uncoatedArea = roomArea - coatedArea;
+            result.append(String.format("Ran out of topcoat. %d sq ft left uncoated.", uncoatedArea));
+        }
+        
+        return result.toString();
+    }
+}
+
+Create a function named applyTopcoat that receives roomLength, roomWidth, and coatAvailable as its parameters.
+
+The function simulates the process of applying a topcoat to a wooden floor on a quiet Sunday afternoon. It should calculate the total area of the room, determine if there's enough topcoat to cover the entire floor, and provide a formatted string describing the coating process.
+
+Follow these guidelines to implement the function:
+
+    1 gallon of topcoat covers 100 square feet.
+    Apply the topcoat row by row, updating the progress after each row.
+    If the topcoat runs out before finishing the room, stop the process.
+    Use string formatting to create progress updates and the final output.
+    Use control flow (like loops and conditional statements) to manage the coating process.
+
+Parameters:
+
+    roomLength (int): The length of the room in feet.
+    roomWidth (int): The width of the room in feet.
+    coatAvailable (float): The amount of topcoat available in gallons.
+
+The function returns a string that includes:
+
+    The total area of the room
+    The amount of topcoat needed for the entire room
+    Progress updates for each row coated
+    A final statement indicating whether the entire floor was coated or not
+
+Here's an example of how the output string should be formatted:
+
+
+Room area: 200 sq ft
+Topcoat needed: 2.00 gallons
+Row 1 coated. 1.00 gallons remaining.
+Row 2 coated. 0.00 gallons remaining.
+Floor coating complete. Used 2.00 gallons of topcoat.
+
+Or if the topcoat runs out:
+
+
+Room area: 300 sq ft
+Topcoat needed: 3.00 gallons
+Row 1 coated. 1.00 gallons remaining.
+Row 2 coated. 0.00 gallons remaining.
+Ran out of topcoat. 100 sq ft left uncoated.
