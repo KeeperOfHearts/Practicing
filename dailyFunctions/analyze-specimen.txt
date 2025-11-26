@@ -1,0 +1,47 @@
+class AnalyzeSpecimen {
+    public static String analyzeSpecimen(String specimenType, int reactionLevel) {
+        if (specimenType.equals("bacteria")) {
+            if (reactionLevel <3) return "Minimal bacterial activity observed.";
+            if (reactionLevel <5) return "Moderate bacterial growth detected.";
+            return "Significant bacterial proliferation identified.";
+        } else if (specimenType.equals("virus")) {
+            if (reactionLevel <3) return "Low viral load detected.";
+            if (reactionLevel <5) return "Moderate viral activity observed.";
+            return "High viral replication rate confirmed.";
+        } else if (specimenType.equals("fungus")) {
+            if (reactionLevel <3) return "Slight fungal presence noted.";
+            if (reactionLevel <5) return "Moderate fungal growth observed.";
+            return "Extensive fungal colonization detected.";
+        } 
+        return "Unknown specimen type. Further analysis required.";
+    }
+}
+
+Create a function named analyzeSpecimen that receives specimenType and reactionLevel as its parameters.
+
+The function simulates a scientist's analysis of a specimen in a laboratory. It should return a string that describes the analysis result based on the specimen type and reaction level.
+
+Use basic string concatenation and conditional statements (if-else) to determine the appropriate response. The analysis should cover three types of specimens: bacteria, virus, and fungus. For any other specimen type, return a message indicating it's unknown.
+
+Parameters:
+
+    specimenType (String): The type of specimen being analyzed (e.g., "bacteria", "virus", "fungus").
+    reactionLevel (int): An integer representing the observed reaction level, ranging from 1 to 5.
+
+The function returns a string describing the analysis result.
+
+Use the following criteria for your analysis:
+
+    For bacteria:
+        Low reaction levels (1-2): "Minimal bacterial activity observed."
+        Medium reaction levels (3-4): "Moderate bacterial growth detected."
+        High reaction level (5): "Significant bacterial proliferation identified."
+    For viruses:
+        Low reaction levels (1-2): "Low viral load detected."
+        Medium reaction levels (3-4): "Moderate viral activity observed."
+        High reaction level (5): "High viral replication rate confirmed."
+    For fungi:
+        Low reaction levels (1-2): "Slight fungal presence noted."
+        Medium reaction levels (3-4): "Moderate fungal growth observed."
+        High reaction level (5): "Extensive fungal colonization detected."
+    For any other specimen type: "Unknown specimen type. Further analysis required."
