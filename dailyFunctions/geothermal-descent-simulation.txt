@@ -1,0 +1,46 @@
+import java.util.Arrays;
+
+class GeothermalDescent {
+    public static int[] geothermalDescent(int initialElevation, int[] slopeChanges, float[] geothermalActivity) {
+        int elevation = initialElevation;
+        int significantFeatures = 0;
+
+        for (int i = 0; i < slopeChanges.length; i++) {
+            if (geothermalActivity[i] > 0.9) {
+                break;
+            }
+
+            if (geothermalActivity[i] > 0.75) {
+                continue;
+            }
+
+            if (geothermalActivity[i] >= 0.5 && geothermalActivity[i] <= 0.75) {
+                significantFeatures++;
+            }
+
+            elevation += (int)(slopeChanges[i] * Math.sin(slopeChanges[i]));
+        }
+
+        return new int[]{elevation, significantFeatures};
+    }
+}
+
+Create a function named geothermalDescent that receives initialElevation, slopeChanges, and geothermalActivity as its parameters.
+
+The function simulates a hiker's journey through a geothermal landscape, calculating the final elevation and the number of significant geothermal features encountered.
+
+During the hiker's descent:
+
+    If the geothermal activity level is above 0.75, the hiker takes a detour, skipping the next slope change (use continue).
+    If the geothermal activity level is above 0.9, it's too dangerous to proceed, and the hiker must end the journey early (use break).
+    A significant geothermal feature is counted when the activity level is between 0.5 and 0.75 (inclusive).
+
+Use compound assignment operators (+=, -=) and increment/decrement operators (++, --) to update the hiker's elevation. Incorporate Math.sin() to add variability to the slope changes.
+
+Parameters:
+
+    initialElevation (int): The starting elevation of the hiker in meters.
+    slopeChanges (int[]): An array representing the slope changes (positive for uphill, negative for downhill).
+    geothermalActivity (float[]): An array representing geothermal activity levels at each step.
+
+The function returns an integer array with two elements: the final elevation of the hiker and the count of significant geothermal features encountered.
