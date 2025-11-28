@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Commit Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__left">
+            <img src="logo.png" alt="Logo" class="header__logo" />
+        </div>
+        <div class="header__right">
+            <p class="creator-info">Created by: <strong>Wsieslaw Mackiewicz</strong></p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h1 class="page-title">HTML/CSS Commits</h1>
+
+        <section class="commits-section">
+            <ul id="commitList" class="commit-list"></ul>
+            <p id="noCommits" class="no-commits">Loading commits...</p>
+        </section>
+    </main>
+
+    <!-- Load script -->
+    <script src="script.js"></script>
+</body>
+
+</html>

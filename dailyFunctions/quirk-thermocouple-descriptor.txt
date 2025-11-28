@@ -1,0 +1,27 @@
+class DescribeThermocouple {
+    public static String describeThermocouple(String material, int year, double temperature, String quirk) {
+        return String.format("In the dusty corners of our quirky hardware store, we discovered a... %s thermocouple, circa %d, capable of measuring up to %d°C. !%s! A true antique marvel!", material.substring(0,1).toUpperCase() + material.substring(1),  year, Math.round(temperature), quirk.toLowerCase());   
+    }
+}
+
+Create a function named describeThermocouple that receives material, year, temperature, and quirk as its parameters.
+
+Your task is to generate a quirky description of an antique thermocouple found in a small town's eccentric hardware store. The function should format and manipulate the input strings to create a cohesive and whimsical description of the thermocouple.
+
+Follow these rules to create the description:
+
+    Start the description with "In the dusty corners of our quirky hardware store, we discovered a..."
+    The material should be in lowercase, except for the first letter which should be capitalized.
+    The year should be formatted as "circa YYYY".
+    The temperature should be rounded to the nearest whole number and formatted as "X°C".
+    The quirk should be incorporated as is, but surrounded by exclamation marks.
+    End the description with "A true antique marvel!"
+
+Parameters:
+
+    material (String): The material of the thermocouple (e.g., "copper", "iron", "platinum")
+    year (int): The year the thermocouple was manufactured
+    temperature (double): The maximum temperature the thermocouple can measure (in Celsius)
+    quirk (String): A unique characteristic or quirk of the thermocouple
+
+The function returns a String containing the formatted description of the thermocouple.
