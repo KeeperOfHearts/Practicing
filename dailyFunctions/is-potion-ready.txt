@@ -1,0 +1,28 @@
+class IsPotionReady {
+    public static boolean isPotionReady(String color, int temperature) {
+        if (color.equals("red") && temperature > 100) return true;
+        if (color.equals("blue") && temperature < 0) return true;
+        if (color.equals("green") && temperature == 25) return true;
+        return false;
+    }
+}
+
+
+Create a function named isPotionReady that receives color and temperature as its parameters.
+
+You are a curious chef experimenting with magical potions in your dimly lit kitchen. You've found an ancient cookbook that describes the perfect conditions for different potions. Your task is to determine whether a potion is ready based on its color and temperature.
+
+The potion is considered ready under the following conditions:
+
+    If the color is "red" and the temperature is above 100 degrees Celsius
+    If the color is "blue" and the temperature is below 0 degrees Celsius
+    If the color is "green" and the temperature is exactly 25 degrees Celsius
+
+For any other color or temperature combination, the potion is not ready.
+
+Parameters:
+
+    color (String): The color of the potion (e.g., "red", "blue", "green")
+    temperature (int): The temperature of the potion in degrees Celsius
+
+The function returns a boolean value: true if the potion is ready, false otherwise.
