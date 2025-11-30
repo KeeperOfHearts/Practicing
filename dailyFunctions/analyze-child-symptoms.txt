@@ -1,0 +1,52 @@
+import java.util.HashMap;
+import java.util.Map;
+
+class AnalyzeChildSymptoms {
+    public static String analyzeChildSymptoms(String symptomDescription, int previousAttempts) {
+        String reversedSymptoms = new StringBuilder(symptomDescription).reverse().toString();
+        String[] symptoms = reversedSymptoms.split("[,.:; ]+");
+        Map<String, Integer> symptomWeights = new HashMap<>();
+        symptomWeights.put("fever", 3);
+        symptomWeights.put("headache", 2);
+        symptomWeights.put("stomachache", 2);
+        symptomWeights.put("cough", 1);
+        int genuinenessScore = 0;
+        for (String symptom : symptoms) {
+            for (Map.Entry<String, Integer> entry : symptomWeights.entrySet()) {
+                if (symptom.toLowerCase().contains(entry.getKey())) {
+                    genuinenessScore += entry.getValue();
+                }
+            }
+        }
+        int confidence = Math.max(0, Math.min(100, genuinenessScore * 10 - previousAttempts * 15));
+        String diagnosis;
+        if (confidence > 70) diagnosis = "Genuinely Ill";
+        else if (confidence > 30) diagnosis = "Possibly Faking";
+        else diagnosis = "Definitely Faking";
+        return diagnosis + ": " + confidence + "%";
+    }
+}
+
+Create a function named analyzeChildSymptoms that receives symptomDescription and previousAttempts as its parameters.
+
+Your task is to implement a function that analyzes a child's attempt to deceive their parents about being sick. The function should use advanced string manipulation and game theory concepts to determine if the child is likely faking or genuinely ill.
+
+The challenge involves parsing a reversed string of symptoms, identifying key phrases even when misspelled or obfuscated, and applying game theory principles to assess the likelihood of the child's strategy being successful.
+
+Parameters:
+
+    symptomDescription (String): A reversed string representing the child's description of their symptoms. This string may contain misspellings and obfuscated words (e.g., "r,e.v:e;f" for "fever").
+    previousAttempts (int): The number of previous attempts the child has made to fake illness, representing a "parental suspicion" factor.
+
+The function should perform the following steps:
+
+    Reverse the symptomDescription string to obtain the actual description.
+    Parse the reversed string to identify symptom-related words and phrases, even when misspelled or obfuscated.
+    Assign weights to various symptoms and their combinations based on their likelihood of being faked or genuine.
+    Apply game theory principles to assess the child's strategy, taking into account the number of previous attempts.
+    Calculate a "genuineness score" based on the identified symptoms and their weights.
+    Determine the final diagnosis and confidence level based on the genuineness score and previous attempts.
+
+The function returns a String in the format "[Diagnosis]: [Confidence]%", where [Diagnosis] is one of "Genuinely Ill", "Possibly Faking", or "Definitely Faking", and [Confidence] is an integer between 0 and 100.
+
+Note: Implement the solution using only the allowed Java types and ensure your code is between 20 and 49 lines long.
