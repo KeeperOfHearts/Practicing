@@ -1,0 +1,19 @@
+class CatAction {
+    public static String catAction(String catName, String preyName, String kitchenSound) {
+        return String.format("%s the cat pounced on the %s while the %s echoed in the busy kitchen.", catName, preyName, kitchenSound);
+    }
+}
+
+Create a function named catAction that receives catName, preyName, and kitchenSound as its parameters.
+
+The function should generate a descriptive sentence about a cat's action in a kitchen environment by manipulating and concatenating the input strings.
+
+Combine the input strings to form a sentence that follows this pattern: "[catName] the cat pounced on the [preyName] while the [kitchenSound] echoed in the busy kitchen."
+
+Parameters:
+
+    catName (String): The name of the cat (e.g., "Whiskers", "Mittens")
+    preyName (String): The name of the prey (e.g., "mouse", "toy")
+    kitchenSound (String): A sound typically heard in a kitchen (e.g., "sizzle", "clang")
+
+The function returns a String containing the generated sentence.
