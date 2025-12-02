@@ -1,0 +1,42 @@
+import java.text.DecimalFormat;
+
+class TeaPartyChallenge {
+    public static String teaPartyChallenge(String hostName, int guestCount, float costPerGuest) {
+        // Calculate the total cost
+        float totalCost = guestCount * costPerGuest;
+        
+        // Add 10% for Whiskers' treats
+        totalCost *= 1.1;
+        
+        // Reverse the host's name
+        String reversedName = new StringBuilder(hostName).reverse().toString();
+        
+        // Format the total cost to two decimal places
+        DecimalFormat df = new DecimalFormat("#.00");
+        String formattedCost = df.format(totalCost);
+        
+        // Return the formatted string
+        return "Dear " + reversedName + ", your tea party will cost $" + formattedCost + ".";
+    }
+}
+
+Create a function named teaPartyChallenge that receives hostName, guestCount, and costPerGuest as its parameters.
+
+Imagine you're hosting a cozy afternoon tea party with your fluffy husky puppy, Whiskers. You need to calculate the total cost of the party and create a fun message for your guests.
+
+Your function should perform the following tasks:
+
+    Calculate the total cost of the tea party by multiplying the number of guests by the cost per guest.
+    Add an extra 10% to the total cost for Whiskers' special treats.
+    Reverse the host's name to create a playful "secret code".
+    Return a formatted string that includes the reversed name and the total cost.
+
+Parameters:
+
+    hostName (String): The name of the host.
+    guestCount (int): The number of guests attending the party.
+    costPerGuest (float): The cost per guest for tea and snacks.
+
+The function returns a string in the format: "Dear [reversed host name], your tea party will cost $[total cost]."
+
+Make sure to round the total cost to two decimal places.
