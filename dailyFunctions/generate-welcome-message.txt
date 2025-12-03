@@ -1,0 +1,33 @@
+class GenerateWelcomeMessage {
+    public static String generateWelcomeMessage(String name, int age, boolean hasAppointment) {
+        if (hasAppointment) {
+            if (age < 18) {
+                return "Ah, wee " + name + "! We've been expectin' ye. Right this way to your appointment, young one!";
+            } else {
+                return "Welcome " + name + "! Thank ye for makin' an appointment. Please head to the reception.";
+            }
+        } else {
+            return "Hello " + name + "! How can we assist ye today at our hospital?";
+        }
+    }
+}
+
+Create a function named generateWelcomeMessage that receives name, age, and hasAppointment as its parameters.
+
+This function aims to generate a personalized welcome message for visitors at a Scottish hospital based on their age and appointment status.
+
+The friendly Scotsman at the reception desk wants to greet visitors differently depending on their situation:
+
+    If the visitor has an appointment and is under 18, the message should be: "Ah, wee [name]! We've been expectin' ye. Right this way to your appointment, young one!"
+    If the visitor has an appointment and is 18 or older, the message should be: "Welcome [name]! Thank ye for makin' an appointment. Please head to the reception."
+    If the visitor does not have an appointment, regardless of age, the message should be: "Hello [name]! How can we assist ye today at our hospital?"
+
+Implement the logic to generate the appropriate welcome message based on the provided parameters.
+
+Parameters:
+
+    name (String): The name of the visitor.
+    age (int): The age of the visitor.
+    hasAppointment (boolean): Indicates if the visitor has an appointment. true means they have an appointment, false means they don't.
+
+The function should return a String representing the personalized welcome message.
