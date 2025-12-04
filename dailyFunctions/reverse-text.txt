@@ -1,0 +1,22 @@
+class ReverseString {
+    public static String reverseString(String inputString) {
+        return new StringBuilder(inputString).reverse().toString();
+    }
+}
+
+Create a function named reverseString that receives inputString as its parameter.
+
+This function reverses the given string.
+
+Steps:
+
+    Create a new empty string to store the reversed string.
+    Iterate through the input string from the last character to the first.
+    Append each character to the new string.
+    Return the reversed string.
+
+Parameters:
+
+    inputString (String): The string to be reversed.
+
+Returns a String, which is the reversed version of the input string.
