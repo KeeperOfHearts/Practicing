@@ -1,0 +1,30 @@
+class RecommendPlantType {
+    public static String recommendPlantType(int temperature, String soilType) {
+        if (temperature < 15 && soilType.equals("clay")) {
+            return "Ferns";
+        } else if (temperature > 14 && temperature < 26 && soilType.equals("loamy")) {
+            return "Roses";
+        } else if (temperature > 25 && soilType.equals("sandy")) {
+            return "Cacti";
+        }
+        return "Grass";
+    }
+}
+
+Create a function named recommendPlantType that receives temperature and soilType as its parameters.
+
+This function aims to recommend a type of plant based on the given temperature and soil type conditions in a backyard garden.
+
+The function should follow these guidelines:
+
+    If the temperature is less than 15 degrees Celsius and soilType is "clay", recommend "Ferns".
+    If the temperature is between 15 and 25 degrees Celsius (inclusive) and soilType is "loamy", recommend "Roses".
+    If the temperature is greater than 25 degrees Celsius and soilType is "sandy", recommend "Cacti".
+    For any other combination of temperature and soilType, recommend "Grass".
+
+Parameters:
+
+    temperature (int): The average temperature of the backyard garden in degrees Celsius.
+    soilType (String): The type of soil in the backyard garden. It can be one of the following values: "clay", "sandy", or "loamy".
+
+The function returns a String representing the recommended plant type based on the given temperature and soil conditions.
