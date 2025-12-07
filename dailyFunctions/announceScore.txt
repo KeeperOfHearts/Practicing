@@ -1,0 +1,18 @@
+class AnnounceScore {
+    public static String announceScore(String playerName, int score) {
+        return String.format("Woohoo! %s just scored %d points! High five!", playerName, score);
+    }
+}
+
+Create a function named announceScore that receives playerName and score as its parameters.
+
+Your task is to generate an exciting arcade-style announcement for a player's score. This function will combine the player's name and their score into a fun, celebratory message that could be displayed on an arcade screen.
+
+Use string concatenation to create a message in the following format: "Woohoo! [playerName] just scored [score] points! High five!"
+
+Parameters:
+
+    playerName (String): The name of the player who achieved the score.
+    score (int): The score achieved by the player.
+
+The function returns a String containing the formatted announcement message.
