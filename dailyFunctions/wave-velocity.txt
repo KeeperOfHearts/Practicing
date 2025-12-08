@@ -1,0 +1,34 @@
+class WaveVelocity {
+    public static float waveVelocity(float wavelength, float depth) {
+        return (float)Math.sqrt(9.8f * wavelength / (float) (2 * Math.PI) * (float) Math.tanh((float)(2 * Math.PI * depth / wavelength)));
+    }
+}
+
+Create a function named waveVelocity that receives wavelength and depth as its parameters.
+
+This function calculates the velocity of a wave based on its wavelength and the depth of the water using the formula:
+
+velocity = Math.sqrt(g * wavelength / (2 * Math.PI) * Math.tanh(2 * Math.PI * depth / wavelength))
+
+Where:
+
+    g is the acceleration due to gravity (approximately 9.8 m/s^2)
+    wavelength is the distance between two successive crests of the wave
+    depth is the depth of the water
+
+Steps to implement:
+
+    Calculate 2 * Math.PI and store it.
+    Calculate 2 * Math.PI * depth / wavelength and store it.
+    Apply Math.tanh() to the result of step 2.
+    Multiply the result of step 3 by g * wavelength / (2 * Math.PI).
+    Apply Math.sqrt() to the result of step 4 to get the final velocity.
+
+Return the calculated velocity as a float value.
+
+Parameters:
+
+    wavelength (float): The wavelength of the wave in meters.
+    depth (float): The depth of the water in meters.
+
+The function returns a float value representing the velocity of the wave in meters per second.
