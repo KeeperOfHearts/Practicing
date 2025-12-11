@@ -1,0 +1,17 @@
+class UpdateBirdFeedStock {
+    public static String updateBirdFeedStock(int initialStock, int unitsSold) {
+        return String.format("Binary: %s New Count: %d", Integer.toBinaryString(unitsSold), initialStock +1 - unitsSold);
+    }
+}
+
+
+Write a function updateBirdFeedStock that takes initialStock, unitsSold and returns a formatted string with binary representation and updated stock.
+
+The function updates the bird feed inventory by subtracting sold units, converts the sold amount to binary, then increments the remaining stock by 1 for tomorrow's delivery.
+
+Parameters:
+
+    initialStock (int): Starting number of bird feed bags
+    unitsSold (int): Number of bags sold today
+
+Returns: Formatted string with binary representation of sold units and final stock count. Format: Binary: [binary] New Count: [decimal]
