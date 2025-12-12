@@ -1,0 +1,36 @@
+class CountSheepToSleep {
+    public static String countSheepToSleep(int sheepCount, int distractionFactor) {
+        int result = 0;
+        for (int sheep = 1;sheep<=sheepCount;sheep++) {
+            if (sheep % distractionFactor != 0) result++;
+            if (sheep % 7 == 0) break;
+        }
+        return String.format("You fell asleep after counting %d sheep.", result);
+    }
+}
+
+Create a function named countSheepToSleep that receives sheepCount and distractionFactor as its parameters.
+
+Imagine you're trying to take a peaceful afternoon nap in a sunny meadow. To help you fall asleep, you decide to count sheep. However, the tranquility of the meadow might occasionally distract you from your counting.
+
+Your function should simulate this sheep-counting process, considering possible distractions. Use increment operators to count the sheep and control flow statements (break, continue) to handle distractions and sleep onset.
+
+Parameters:
+
+    sheepCount (int): The total number of sheep you plan to count before falling asleep.
+    distractionFactor (int): A number between 1 and 5 representing how easily distracted you are. 1 means rarely distracted, 5 means frequently distracted.
+
+The function should return a String describing your nap experience, including how many sheep you counted before falling asleep.
+
+Follow these steps in your function:
+
+    Initialize a counter for the number of sheep counted.
+    Use a loop to count sheep from 1 to sheepCount.
+    For each sheep, check if you get distracted. If distracted, use 'continue' to skip counting that sheep.
+    After counting each sheep, check if you fall asleep. If you do, use 'break' to end the counting.
+    Return a string describing how many sheep were counted before falling asleep or reaching the end.
+
+Note: To simulate distraction and falling asleep, use the following conditions:
+
+    Distraction occurs if: (currentSheep % distractionFactor == 0)
+    Falling asleep occurs if: (currentSheep % 7 == 0)
