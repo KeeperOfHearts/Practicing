@@ -1,0 +1,31 @@
+class EvaluateCropHealth {
+    public static String evaluateCropHealth(boolean[] sensorData) {
+        double count = 0;
+        for (boolean status : sensorData) {
+            if (status) count++;
+            
+        }
+        if (count / sensorData.length > 0.5) return "Critical";
+        if (count / sensorData.length >= 0.2) return "Moderate";
+
+        return "Healthy";
+    }
+}
+
+Create a function named evaluateCropHealth that receives sensorData as its parameter.
+
+This function analyzes the health of a cassava crop based on sensor data indicating whipworm activity. The sensor data is a boolean array where true means whipworm activity detected, and false means no activity.
+
+Calculate the percentage of sensors detecting whipworm activity by counting the true values and dividing by the total number of sensors, then multiplying by 100.
+
+Determine the crop's health based on the percentage:
+
+    Less than 20%: "Healthy"
+    20% to 50%: "Moderate"
+    More than 50%: "Critical"
+
+Parameters:
+
+    sensorData (boolean[]): An array representing sensor outputs. true indicates whipworm activity detected, false means no activity.
+
+The function returns a String: "Healthy", "Moderate", or "Critical".
