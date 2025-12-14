@@ -85,6 +85,11 @@ async function loadCommits() {
   }
 }
 
+// add a function to copy description of commit from its id 
+function copyDescription(id) {
+  const description = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(description);
+}
 
 
 loadCommits();
