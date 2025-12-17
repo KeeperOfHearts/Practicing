@@ -1,0 +1,35 @@
+class EvaluateMealReview {
+    public static String evaluateMealReview(String review) {
+        review = review.toLowerCase();
+        boolean amaz = false;
+        boolean awf = false;
+        if (review.contains("delicious") || review.contains("amazing") || review.contains("loved")) amaz = true;
+        if (review.contains("awful") || review.contains("disappointed") || review.contains("terrible")) awf = true;
+        if (amaz && awf) return "Neutral";
+        if (awf) return "Dissatisfied";
+        if (amaz) return "Satisfied";
+        return "Neutral";
+    }
+}
+
+Create a function named evaluateMealReview that receives review as its parameter.
+
+As a chef in a tropical paradise resort, you've received feedback on your latest culinary creation. Your task is to analyze the customer's review and determine their satisfaction level.
+
+The function should examine the review for specific keywords to categorize the customer's satisfaction. It should return "Satisfied" for positive reviews, "Dissatisfied" for negative ones, and "Neutral" for mixed or unclear feedback.
+
+Parameters:
+
+    review (String): A string containing the customer's review of the meal.
+
+The function returns a String indicating the satisfaction level: "Satisfied", "Neutral", or "Dissatisfied".
+
+Use the following criteria to evaluate the review:
+
+    If the review contains positive words like "delicious", "amazing", or "loved", return "Satisfied".
+    If the review contains negative words like "terrible", "awful", or "disappointed", return "Dissatisfied".
+    If the review doesn't contain strong positive or negative words, or if it contains a mix of both, return "Neutral".
+
+Make sure to use substring operations to check for these words within the review string. Also, implement if-else statements to handle the different cases.
+
+Note: The review may contain mentions of tropical foods like "coconut", "pineapple", or "mango", but these should not affect the satisfaction rating.
