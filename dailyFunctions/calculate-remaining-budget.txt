@@ -1,0 +1,20 @@
+class CalculateRemainingBudget {
+    public static String calculateRemainingBudget(int monthlyBudget, int[] dailyExpenses) {
+        for (int num : dailyExpenses) {
+            monthlyBudget -= num;
+        }
+
+        return Integer.toBinaryString(monthlyBudget);
+    }
+}
+
+Write a function calculateRemainingBudget that takes monthlyBudget, dailyExpenses and returns the remaining budget as a binary string.
+
+The function loops through daily expenses, skipping zero-value days with continue and stopping when total spent reaches or exceeds the monthly budget with break.
+
+Parameters:
+
+    monthlyBudget (int): Total monthly budget amount
+    dailyExpenses (int[]): Array of daily expense amounts
+
+Returns: Remaining budget converted to binary string. Format: "1010"
