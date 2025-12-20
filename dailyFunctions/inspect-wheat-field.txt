@@ -1,0 +1,44 @@
+import java.text.DecimalFormat;
+
+class InspectWheatField {
+    public static String inspectWheatField(String farmerName, int wheatStalkCount) {
+        // Reverse the farmer's name
+        String reversedName = new StringBuilder(farmerName).reverse().toString();
+        
+        // Calculate the golden ratio
+        double goldenRatio = wheatStalkCount / 1.618;
+        
+        // Calculate the sunrise bonus
+        int sunriseBonus = wheatStalkCount + reversedName.length();
+        
+        // Format the golden ratio to two decimal places
+        DecimalFormat df = new DecimalFormat("#.##");
+        String formattedGoldenRatio = df.format(goldenRatio);
+        
+        // Return the formatted string
+        return String.format("Farmer %s inspected %d stalks. Golden ratio: %s, Sunrise bonus: %d",
+                             reversedName, wheatStalkCount, formattedGoldenRatio, sunriseBonus);
+    }
+}
+
+Create a function named inspectWheatField that receives farmerName and wheatStalkCount as its parameters.
+
+The function simulates a farmer's morning routine of inspecting wheat stalks at sunrise. It performs string reversal and basic arithmetic operations based on the farmer's name and the number of wheat stalks inspected.
+
+The function should do the following:
+
+    Reverse the farmer's name (to represent looking at things from a different perspective).
+    Calculate the "golden ratio" of wheat stalks by dividing the number of wheat stalks by 1.618 (the golden ratio).
+    Calculate the "sunrise bonus" by adding the length of the reversed name to the number of wheat stalks.
+    Return a formatted string with the results.
+
+Parameters:
+
+    farmerName (String): The name of the farmer (non-empty string).
+    wheatStalkCount (int): The number of wheat stalks inspected (positive integer).
+
+The function returns a string in the following format:
+
+"Farmer [reversed name] inspected [wheatStalkCount] stalks. Golden ratio: [goldenRatio], Sunrise bonus: [sunriseBonus]"
+
+Note: Round the golden ratio to two decimal places.
