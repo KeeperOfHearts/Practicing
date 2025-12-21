@@ -1,0 +1,23 @@
+class AssignWorkspace {
+    public static String assignWorkspace(String departmentCode, int roomNumber) {
+        if ((roomNumber & 1) == 0) departmentCode = new StringBuilder(departmentCode).reverse().toString();
+        return departmentCode + "-" + roomNumber;
+    }
+}
+
+Write a function assignWorkspace that takes departmentCode, roomNumber and returns a workspace identifier string.
+
+The function creates workspace identifiers for the new office by processing department codes based on room number conditions and concatenating them with room numbers.
+
+Logic:
+
+    If the room number is even, reverse the department code
+    If the room number is odd, keep the department code as-is
+    Concatenate the processed department code with the room number using a dash separator
+
+Parameters:
+
+    departmentCode (String): The department identifier code
+    roomNumber (int): The room number for the workspace
+
+Returns: A workspace identifier string. Format: processedDepartmentCode-roomNumber
