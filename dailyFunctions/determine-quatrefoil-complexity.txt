@@ -1,0 +1,27 @@
+class DetermineQuatrefoilComplexity {
+    public static String determineQuatrefoilComplexity(int lobes) {
+        if (lobes < 4) return "Simple design";
+        if (lobes < 5) return "Classic quatrefoil";
+        if (lobes < 7) return "Complex design";
+        return "Masterpiece";
+    }
+}
+
+Create a function named determineQuatrefoilComplexity that receives lobes as its parameter.
+
+As a medieval artisan, you are tasked with categorizing quatrefoil designs for church windows based on their complexity. The complexity is determined by the number of lobes in the design.
+
+Your function should return a string describing the complexity of the quatrefoil design based on the following criteria:
+
+    3 lobes or less: "Simple design"
+    4 lobes: "Classic quatrefoil"
+    5-6 lobes: "Complex design"
+    7 or more lobes: "Masterpiece"
+
+Parameters:
+
+    lobes (int): The number of lobes in the quatrefoil design. This will always be a positive integer.
+
+The function returns a String representing the complexity category of the quatrefoil design.
+
+Use conditional statements (if, else if, else) to implement this logic.
