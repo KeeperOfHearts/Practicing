@@ -1,0 +1,32 @@
+class ShepherdCall {
+    public static String shepherdCall(String shepherdName, int sheepCount) {
+        return String.format("%s calls: %s! %s", shepherdName , new StringBuilder(shepherdName).reverse().toString(), "baa ".repeat(sheepCount).substring(0, sheepCount*4-1));
+    }
+}
+
+Create a function named shepherdCall that receives shepherdName (String) and sheepCount (int) as its parameters.
+
+The function simulates a shepherd's call to his sheep on a hillside. It should return a formatted string that includes the shepherd's name (both forward and reversed) and a series of "baa" sounds based on the number of sheep.
+
+The function should perform the following operations:
+
+    Reverse the shepherdName.
+    Create a string of "baa" sounds, repeated sheepCount times.
+    Format the output string as follows: "[shepherdName] calls: [reversedShepherdName]! [baa x sheepCount]"
+
+Parameters:
+
+    shepherdName (String): The name of the shepherd. It will contain only basic ASCII letters (both uppercase and lowercase) and will have a length of at least 1 and at most 50 characters.
+    sheepCount (int): The number of sheep in the flock. It will be a positive integer not exceeding 20.
+
+The function returns a formatted string as described above.
+
+Here's an example of how to reverse a string in Java:
+
+
+String reversed = new StringBuilder(original).reverse().toString();
+
+And here's how you can repeat a string in Java:
+
+
+String repeated = "baa ".repeat(count).trim();
