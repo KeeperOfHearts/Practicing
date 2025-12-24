@@ -1,0 +1,28 @@
+class PlantHealthStatus {
+    public static String plantHealthStatus(int hydrationLevel, int sunlightHours) {
+        if (hydrationLevel > 80) return "Waterlogged";
+        if (sunlightHours<6) return "Needs more light";
+        if (hydrationLevel < 60) return "Dehydrated";
+                if (sunlightHours > 8) return "Sunburned";
+        return "Healthy";
+    }
+}
+
+Create a function named plantHealthStatus that receives hydrationLevel and sunlightHours as its parameters.
+
+This function determines the health status of a plant based on its hydration level and sunlight exposure.
+
+The function should return a String indicating the health of the plant according to the following conditions:
+
+    Return "Healthy" if hydrationLevel is between 60 and 80 inclusive, and sunlightHours is between 6 and 8 inclusive.
+    Return "Dehydrated" if hydrationLevel is below 60, regardless of sunlight exposure.
+    Return "Waterlogged" if hydrationLevel is above 80, regardless of sunlight exposure.
+    Return "Sunburned" if sunlightHours are above 8, unless it is also waterlogged.
+    Return "Needs more light" if sunlightHours are less than 6, unless it is dehydrated or waterlogged.
+
+Parameters:
+
+    hydrationLevel (int): The percentage of water content in the plant, where 100 is perfectly hydrated. It will be between 0 and 100 inclusive.
+    sunlightHours (int): The number of hours the plant was exposed to sunlight in a day. It will be between 0 and 24 inclusive.
+
+The function returns a String representing the health status of the plant.
