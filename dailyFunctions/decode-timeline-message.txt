@@ -1,0 +1,104 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+class DecodeTimelineMessage {
+    public static String decodeTimelineMessage(String input) {
+        String[] shapes = input.split(";");
+        StringBuilder message = new StringBuilder();
+
+        for (String shape : shapes) {
+            String[] parts = shape.split(":");
+            String shapeType = parts[0];
+            String[] coords = parts[1].split(",");
+
+            switch (shapeType) {
+                case "triangle":
+                    message.append(decodeTriangle(coords)).append(" ");
+                    break;
+                case "circle":
+                    message.append(decodeCircle(coords)).append(" ");
+                    break;
+                case "rectangle":
+                    message.append(decodeRectangle(coords)).append(" ");
+                    break;
+                case "polygon":
+                    message.append(decodePolygon(coords)).append(" ");
+                    break;
+            }
+        }
+
+        return message.toString().trim();
+    }
+
+    private static String decodeTriangle(String[] coords) {
+        double x1 = Double.parseDouble(coords[0]);
+        double y1 = Double.parseDouble(coords[1]);
+        double x2 = Double.parseDouble(coords[2]);
+        double y2 = Double.parseDouble(coords[3]);
+        double x3 = Double.parseDouble(coords[4]);
+        double y3 = Double.parseDouble(coords[5]);
+
+        double area = Math.abs((x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2)) / 2);
+        return decodeWord(area);
+    }
+
+    private static String decodeCircle(String[] coords) {
+        double radius = Double.parseDouble(coords[2]);
+        double circumference = 2 * Math.PI * radius;
+        return decodeWord(circumference);
+    }
+
+    private static String decodeRectangle(String[] coords) {
+        double width = Math.abs(Double.parseDouble(coords[2]) - Double.parseDouble(coords[0]));
+        double height = Math.abs(Double.parseDouble(coords[3]) - Double.parseDouble(coords[1]));
+        double perimeter = 2 * (width + height);
+        return decodeWord(perimeter);
+    }
+
+    private static String decodePolygon(String[] coords) {
+        int sides = coords.length / 2;
+        return decodeWord(sides);
+    }
+
+    private static String decodeWord(double value) {
+        int rounded = (int) Math.round(value);
+        int lastTwoDigits = rounded % 100;
+        while (lastTwoDigits > 25) {
+            lastTwoDigits -= 26;
+        }
+        return String.valueOf((char) (lastTwoDigits + 'A'));
+    }
+}
+
+Create a function named decodeTimelineMessage that receives String input as its parameter.
+
+Your task is to decode a complex geometric shape description into a meaningful message about different decades of youth. The input string contains encoded information about various geometric shapes, their properties, and transformations. Each shape and its attributes represent a specific decade and events from that time period.
+
+To decode the message, follow these steps:
+
+    Parse the input string using regular expressions to extract information about different geometric shapes (triangles, circles, polygons) and their properties (coordinates, angles, radii).
+    Apply geometric transformations (rotations, translations, scaling) described in the input to modify the shapes and extract hidden information.
+    Perform mathematical operations on the geometric properties to decode letters, words, or phrases associated with each decade.
+    Use string manipulation techniques to assemble the decoded information into a coherent message about youth experiences in different decades.
+
+The decoding process should follow these rules:
+
+    Triangles represent the 1980s. The area of the triangle determines the first word of the decade's message.
+    Circles represent the 1990s. The circumference of the circle determines the second word of the decade's message.
+    Rectangles represent the 2000s. The perimeter of the rectangle determines the third word of the decade's message.
+    Polygons with more than 4 sides represent the 2010s. The number of sides determines the fourth word of the decade's message.
+
+To decode words from numeric values:
+
+    Round the calculated value (area, circumference, perimeter) to the nearest integer.
+    Take the last two digits of this integer.
+    Map these two digits to letters (00 = 'A', 01 = 'B', ..., 25 = 'Z').
+    If the number is greater than 25, subtract 26 repeatedly until it falls in the range 0-25.
+
+Parameters:
+
+    input (String): A string containing encoded geometric information. It will be in the format: "shape1:prop1,prop2;shape2:prop1,prop2;...". For example: "triangle:0,0,3,0,0,4;circle:2,2,5;rectangle:0,0,4,3;polygon:1,1,2,2,3,3,4,4,5,5".
+
+The function returns a string containing the decoded timeline message, which should be a whimsical journey through several decades of youth, highlighting key events or experiences from each period.
+
+Example of the return string: "WILD NEON DIGITAL SOCIAL" (representing a word for each decade from the 1980s to the 2010s).
