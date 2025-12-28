@@ -1,0 +1,26 @@
+class FruitTasteDescriptor {
+    public static String fruitTasteDescriptor(String fruit, String weather) {
+        if (weather.equals("rainy")) return "soggy " + fruit;
+        if (weather.equals("cloudy")) return "bland " + fruit;
+        if (fruit.equals("mango")) return "Sweet and juicy mango!";
+        return "Tangy and appetizing kiwi!";
+    }
+}
+
+Create a function named fruitTasteDescriptor that receives fruit and weather as its parameters.
+
+This function determines the taste description of a fruit based on the weather during a picnic.
+
+Rules:
+
+    If the weather is "sunny" and the fruit is "mango", return "Sweet and juicy mango!".
+    If the weather is "sunny" and the fruit is "kiwi", return "Tangy and appetizing kiwi!".
+    For "rainy" weather, all fruits should have the description "soggy" followed by the fruit name (e.g., "soggy kiwi").
+    For "cloudy" weather, all fruits should have the description "bland" followed by the fruit name (e.g., "bland mango").
+
+Parameters:
+
+    fruit (String): The name of the fruit.
+    weather (String): The weather condition during the picnic ("sunny", "rainy", or "cloudy").
+
+The function returns a String describing how the fruit tastes based on the fruit type and the weather condition.
