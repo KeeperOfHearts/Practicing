@@ -1,0 +1,29 @@
+class UpdateSketchProgress {
+    public static String updateSketchProgress(String currentSketch, int artistEnergy, boolean isDarkening) {
+        if (artistEnergy < 20) return "Taking a break";
+        if (isDarkening && !currentSketch.equals("almost complete")) return "Finishing for today";
+        if (artistEnergy > 50 && currentSketch.equals("outline")) return "half-done";
+        if (artistEnergy > 30 && currentSketch.equals("half-done")) return "almost complete";
+        if (artistEnergy > 10 && currentSketch.equals("almost complete")) return "masterpiece finished";
+        return currentSketch;
+    }
+}
+
+Create a function named updateSketchProgress that receives currentSketch, artistEnergy, and isDarkening as its parameters.
+
+The function simulates a sketch artist's progress in the park, determining whether they continue sketching, take a break, or finish for the day based on their current state, energy level, and lighting conditions.
+
+Parameters:
+
+    currentSketch (String): Represents the current state of the sketch. Possible values are "outline", "half-done", or "almost complete".
+    artistEnergy (int): Represents the artist's energy level, ranging from 0 to 100.
+    isDarkening (boolean): Indicates if it's getting darker outside (true) or not (false).
+
+The function returns a String indicating the next state of the sketch or the artist's action based on the following rules:
+
+    If the artist's energy is below 20, return "Taking a break" regardless of other factors.
+    If it's getting darker and the sketch is not "almost complete", return "Finishing for today".
+    If the current sketch is "outline" and energy is above 50, return "half-done".
+    If the current sketch is "half-done" and energy is above 30, return "almost complete".
+    If the current sketch is "almost complete" and energy is above 10, return "masterpiece finished".
+    In any other case, return the current state of the sketch.
