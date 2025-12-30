@@ -1,0 +1,27 @@
+class CountTeachableClasses {
+    public static int countTeachableClasses(String[] classTypes, int maxClasses) {
+        int count = 0;
+        for (String type : classTypes) {
+            if (type.equals("fox-trot")) continue;
+            if (count == maxClasses) break;
+            count++;
+        }
+        return count;
+    }
+}
+
+Write a function countTeachableClasses that takes classTypes, maxClasses and returns the number of classes an instructor can teach.
+
+The function loops through dance class types, skips fox-trot classes using continue, increments a counter for each valid class using ++, and stops with break when reaching the maximum capacity.
+
+Conditions:
+
+    Skip any class named "fox-trot" (case-sensitive)
+    Stop counting when maxClasses limit is reached
+
+Parameters:
+
+    classTypes (String[]): Array of dance class names
+    maxClasses (int): Maximum number of classes the instructor can teach
+
+Returns: Integer representing the total number of classes the instructor will teach. Format: 5
