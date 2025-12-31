@@ -1,0 +1,61 @@
+import java.text.DecimalFormat;
+
+class AnalyzeCalsisponge {
+    public static String analyzeCalsisponge(String species, float diameter, String color) {
+        String size;
+        String colorFact;
+        DecimalFormat df = new DecimalFormat("#.#");
+
+        if (diameter < 1.0) {
+            size = "tiny";
+        } else if (diameter < 5.0) {
+            size = "small";
+        } else if (diameter < 10.0) {
+            size = "medium";
+        } else {
+            size = "large";
+        }
+
+        if (color.equalsIgnoreCase("white")) {
+            colorFact = "This is a common color for calcisponges!";
+        } else if (color.equalsIgnoreCase("yellow")) {
+            colorFact = "Yellow calcisponges are quite rare!";
+        } else {
+            colorFact = "This is an unusual color for a calcisponge!";
+        }
+
+        return String.format("Species: %s, Size: %s (%s cm), Color: %s. %s",
+                species, size, df.format(diameter), color, colorFact);
+    }
+}
+
+Create a function named analyzeCalsisponge that receives species, diameter, and color as its parameters.
+
+The function should analyze a calcisponge specimen and return a formatted string describing its characteristics.
+
+Analyze the specimen based on its size and color, then format the information into a single string.
+
+Parameters:
+
+    species (String): The scientific name of the calcisponge species.
+    diameter (float): The diameter of the specimen in centimeters.
+    color (String): The color of the specimen.
+
+The function returns a String containing the formatted description of the calcisponge specimen.
+
+Size classification:
+
+    If diameter < 1.0 cm: "tiny"
+    If 1.0 cm <= diameter < 5.0 cm: "small"
+    If 5.0 cm <= diameter < 10.0 cm: "medium"
+    If diameter >= 10.0 cm: "large"
+
+Color analysis:
+
+    If color is "white": "This is a common color for calcisponges!"
+    If color is "yellow": "Yellow calcisponges are quite rare!"
+    For any other color: "This is an unusual color for a calcisponge!"
+
+Format the output string as follows:
+
+"Species: [species], Size: [size] ([diameter] cm), Color: [color]. [color fact]"
