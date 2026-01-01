@@ -1,0 +1,20 @@
+class ExploreVillage {
+    public static String exploreVillage(String villageLayout, char landmark) {
+        int index = villageLayout.indexOf(landmark) + 1;
+        if (index == 0) index = villageLayout.length();
+        return villageLayout.substring(0, index);
+    }
+}
+
+Create a function named exploreVillage that receives villageLayout and landmark as its parameters.
+
+The function simulates a confident tourist exploring an Italian village street by street. The tourist will explore the village until they encounter a specific landmark or reach the end of the village.
+
+The function should iterate through each character in the village layout, adding it to the exploration path. If the landmark is found, the exploration should stop immediately. If the end of the village is reached without finding the landmark, the entire village will have been explored.
+
+Parameters:
+
+    villageLayout (String): A string representing the village layout, where each character is a street with different attractions.
+    landmark (char): A character representing the landmark that will make the tourist stop exploring.
+
+The function returns a String that represents the streets the tourist explored before stopping.
