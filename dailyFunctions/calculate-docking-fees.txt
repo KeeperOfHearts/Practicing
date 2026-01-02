@@ -1,0 +1,33 @@
+class CalculateDockingFees {
+    public static float calculateDockingFees(int days, boolean improperDocking) {
+        double discount = days / 5 * 0.05;
+        int total = 20 * days;
+        total -= total * discount;
+        total += ((improperDocking) ? 15 * days : 0);
+        return (float) (total);
+    }
+}
+
+Create a function named calculateDockingFees that receives int days and boolean improperDocking as its parameters.
+
+The function calculates the total cost of Lucius's docking fees based on the number of days he stays and his docking behavior.
+
+Here's how the docking fees are calculated:
+
+    The base fee for docking is $20 per day.
+    If Lucius docked improperly, there's an additional fee of $15 per day.
+    For every 5 days of stay, Lucius gets a discount of 5% on the total fee (before applying the improper docking fee).
+
+Follow these steps to calculate the total docking fees:
+
+    Calculate the initial total fee based on the number of days and the base rate.
+    Apply the discount for every 5 days of stay.
+    If Lucius docked improperly, add the additional fee.
+    Return the final calculated fee.
+
+Parameters:
+
+    days (int): The number of days Lucius stays at the dock. It will be a positive integer.
+    improperDocking (boolean): Indicates whether Lucius docked properly (false) or improperly (true).
+
+The function returns a float representing the total cost of docking fees.
