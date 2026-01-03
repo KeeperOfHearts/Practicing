@@ -1,0 +1,16 @@
+class DecipherAncientNumber {
+    public static int decipherAncientNumber(int manuscriptCode, int shift) {
+        return manuscriptCode - shift;
+    }
+}
+
+Create a function named decipherAncientNumber that receives manuscriptCode and shift as parameters.
+
+This function deciphers an ancient number by subtracting the shift value from the manuscriptCode.
+
+Parameters:
+
+    manuscriptCode (int): The encrypted number (1 to 5000).
+    shift (int): The value added to the original number (1 to 100).
+
+The function returns the original number (int).
