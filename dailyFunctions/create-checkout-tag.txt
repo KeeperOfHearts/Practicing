@@ -1,0 +1,16 @@
+class CreateCheckoutTag {
+    public static String createCheckoutTag(String borrowerName, String toolName) {
+        return borrowerName.toUpperCase() + "-" + toolName.toUpperCase();
+    }
+}
+
+Write a function createCheckoutTag that takes borrowerName, toolName and returns a checkout tag string.
+
+The function combines the borrower's name and tool name with a hyphen, then converts everything to uppercase for visibility.
+
+Parameters:
+
+    borrowerName (String): The name of the person borrowing the tool
+    toolName (String): The name of the tool being borrowed
+
+Returns: A checkout tag in uppercase format. Format: BORROWERNAME-TOOLNAME
