@@ -1,0 +1,17 @@
+class FormatPlotInfo {
+    public static String formatPlotInfo(String plotCode, String plantName, String date) {
+        return String.format("Plot %s-%s: %s on %s", plotCode.substring(0, 1), plotCode.substring(1), plantName, date);
+    }
+}
+
+Write a function formatPlotInfo that takes plotCode, plantName, date and returns a formatted garden plot information string.
+
+The function extracts the letter and number from the plot code using substrings, then formats them into a readable plot assignment message.
+
+Parameters:
+
+    plotCode (String): A plot identifier with one letter followed by numbers (e.g., "A12", "B5")
+    plantName (String): The name of the plant to be grown
+    date (String): The planting date
+
+Returns: A formatted string. Format: Plot [letter]-[number]: [plantName] on [date]
