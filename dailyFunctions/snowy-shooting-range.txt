@@ -1,0 +1,98 @@
+import java.util.Arrays;
+
+class SnowyShootingRange {
+    public static String snowyShootingRange(String shooterName, int targetDistance, int windSpeed, String windDirection, int temperature, boolean isSnowing, int[] shotCoordinates) {
+        StringBuilder result = new StringBuilder();
+
+        // Greeting
+        result.append(String.format("Welcome to the Snowy Shooting Range, %s!\n\n", shooterName));
+
+        // Weather description
+        result.append("Weather conditions:\n");
+        result.append(String.format("- Target distance: %d meters\n", targetDistance));
+        result.append(String.format("- Wind: %d km/h from the %s\n", windSpeed, windDirection));
+        result.append(String.format("- Temperature: %d°C\n", temperature));
+        result.append(String.format("- Snowing: %s\n\n", isSnowing ? "Yes" : "No"));
+
+        // Calculate shot accuracies
+        double[] distances = new double[3];
+        double totalDistance = 0;
+        result.append("Shot analysis:\n");
+        for (int i = 0; i < 3; i++) {
+            int x = shotCoordinates[i * 2];
+            int y = shotCoordinates[i * 2 + 1];
+            distances[i] = Math.sqrt(x * x + y * y);
+            totalDistance += distances[i];
+            result.append(String.format("- Shot %d: (%.2f, %.2f) - Distance from center: %.2f\n", i + 1, (double)x, (double)y, distances[i]));
+        }
+
+        // Calculate average distance and determine performance rating
+        double avgDistance = totalDistance / 3;
+        String performanceRating;
+        if (avgDistance <= 1) {
+            performanceRating = "Excellent";
+        } else if (avgDistance <= 2) {
+            performanceRating = "Good";
+        } else if (avgDistance <= 3) {
+            performanceRating = "Fair";
+        } else {
+            performanceRating = "Poor";
+        }
+
+        result.append(String.format("\nOverall performance: %s (Average distance: %.2f)\n\n", performanceRating, avgDistance));
+
+        // Generate suggestions
+        result.append("Suggestions for improvement:\n");
+        if (windSpeed > 20) {
+            result.append("- Consider wind compensation techniques for strong winds\n");
+        }
+        if (temperature < 0) {
+            result.append("- Be aware of the effects of cold temperature on your equipment\n");
+        }
+        if (isSnowing) {
+            result.append("- Practice shooting in snowy conditions to improve visibility adaptation\n");
+        }
+        if (targetDistance > 500) {
+            result.append("- Focus on long-range shooting techniques\n");
+        }
+        if (avgDistance > 2) {
+            result.append("- Work on improving your aim and stability\n");
+        }
+
+        return result.toString();
+    }
+}
+
+Create a function named snowyShootingRange that receives shooterName, targetDistance, windSpeed, windDirection, temperature, isSnowing, and shotCoordinates as its parameters.
+
+The function simulates a target shooting game at a snowy shooting range and returns a detailed analysis of the shooting session.
+
+To solve this challenge, you need to use advanced string concatenation, string manipulation, and logical operators. Here's a breakdown of what you need to do:
+
+    Create a greeting using the shooter's name.
+    Describe the weather conditions based on the input parameters.
+    Calculate the accuracy of each shot. The target is a circle with a radius of 5 units, and the center is at (0, 0). The accuracy is determined by the distance of the shot from the center.
+    Determine an overall performance rating based on the average accuracy of the shots.
+    Generate suggestions for improvement based on the weather conditions and performance.
+    Combine all this information into a single, well-formatted string.
+
+Parameters:
+
+    shooterName (String): The name of the shooter.
+    targetDistance (int): The distance to the target in meters (1 to 1000).
+    windSpeed (int): The wind speed in km/h (0 to 100).
+    windDirection (String): The wind direction, either "left" or "right".
+    temperature (int): The temperature in Celsius (-30 to 40).
+    isSnowing (boolean): Indicates whether it's snowing (true) or not (false).
+    shotCoordinates (int[]): An array of 6 integers representing the x and y coordinates of 3 shots on the target (x1, y1, x2, y2, x3, y3). Each coordinate ranges from -5 to 5.
+
+The function returns a String containing a detailed analysis of the shooting session, including a greeting, weather description, shot accuracies, overall performance rating, and suggestions for improvement.
+
+Use the following guidelines for the performance rating:
+
+    Excellent: Average distance from center ≤ 1
+    Good: Average distance from center ≤ 2
+    Fair: Average distance from center ≤ 3
+    Poor: Average distance from center > 3
+
+Remember to format your output string nicely and use appropriate line breaks for readability.
