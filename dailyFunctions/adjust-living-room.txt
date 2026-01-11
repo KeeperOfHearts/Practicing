@@ -1,0 +1,60 @@
+import java.util.Arrays;
+
+class AdjustLivingRoom {
+    public static String adjustLivingRoom(String curtains, int[] radiatorSettings) {
+        StringBuilder sb = new StringBuilder(curtains);
+        
+        // Open the curtains
+        int leftCount = 0;
+        for (int i = 0; i < 3 && i < sb.length(); i++) {
+            if (sb.charAt(i) == '|') {
+                sb.setCharAt(i, '-');
+                leftCount++;
+            } else {
+                break;
+            }
+        }
+        
+        int rightCount = 0;
+        for (int i = sb.length() - 1; i >= sb.length() - 3 && i >= 0; i--) {
+            if (sb.charAt(i) == '|') {
+                sb.setCharAt(i, '-');
+                rightCount++;
+            } else {
+                break;
+            }
+        }
+        
+        // Calculate average heat setting
+        double averageHeat = Arrays.stream(radiatorSettings).average().orElse(0.0);
+        
+        return String.format("Curtains: %s, Average heat: %.1f", sb.toString(), averageHeat);
+    }
+}
+
+Create a function named adjustLivingRoom that receives curtains and radiatorSettings as its parameters.
+
+Your task is to simulate adjusting the coziness of a living room by manipulating curtains and a radiator. The function should perform the following operations:
+
+    "Open" the curtains by replacing the first three and last three '|' characters with '-' characters. If there are fewer than three '|' characters on either side, replace as many as possible.
+    Calculate the average heat setting of the radiator by summing all elements in the radiatorSettings array and dividing by the number of elements.
+
+Parameters:
+
+    curtains (String): A string of 10 characters representing the curtains. Each character can be either '|' (closed) or '-' (open).
+    radiatorSettings (int[]): An array of 5 integers (0-5) representing the current heat settings of a five-bar radiator.
+
+The function returns a String describing the state of the curtains and the average heat setting of the radiator in the format: "Curtains: [curtain_state], Average heat: [average_heat]", where [curtain_state] is the modified curtain string and [average_heat] is rounded to one decimal place.
+
+Constraints:
+
+    The curtains string will always have exactly 10 characters.
+    The radiatorSettings array will always have exactly 5 integers.
+    Each integer in radiatorSettings will be between 0 and 5 (inclusive).
+
+Hints:
+
+    Use substring operations to manipulate the curtains string.
+    Use a loop to count and replace '|' characters in the curtains string.
+    Use array operations to calculate the average of radiatorSettings.
+    Use String.format() to round the average heat to one decimal place.
