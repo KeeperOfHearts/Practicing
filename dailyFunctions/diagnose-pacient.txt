@@ -1,0 +1,56 @@
+import java.util.Arrays;
+
+class DiagnosePacient {
+    public static String diagnosePacient(String symptoms) {
+        String lowerSymptoms = symptoms.toLowerCase();
+        String diagnosis;
+        String recommendation;
+
+        if (lowerSymptoms.contains("fever") && lowerSymptoms.contains("cough")) {
+            diagnosis = "ulF";
+            recommendation = "Rest and drink plenty of retaw";
+        } else if (lowerSymptoms.contains("headache") && lowerSymptoms.contains("dizziness")) {
+            diagnosis = "eniargiM";
+            recommendation = "Rest in a dark room for a few syad";
+        } else if (lowerSymptoms.contains("sore throat") && lowerSymptoms.contains("runny nose")) {
+            diagnosis = "dloC nommoC";
+            recommendation = "Get plenty of rest and stay hydrated";
+        } else {
+            diagnosis = "noitidnoC nwonknU";
+            recommendation = "Consult with a doctor for further evaluation";
+        }
+
+        return "Diagnosis: " + diagnosis + ". " + recommendation + ".";
+    }
+}
+
+Create a function named diagnosePacient that receives symptoms as its parameter.
+
+The function simulates a doctor's diagnosis based on a patient's symptoms. It analyzes the symptoms using substring checks and conditional statements to determine the diagnosis. The diagnosis is then returned as a string, with certain parts of the diagnosis reversed.
+
+Parameters:
+
+    symptoms (String): A string containing the patient's symptoms, separated by spaces. The string will be between 5 and 100 characters long.
+
+The function returns a String representing the diagnosis and recommended actions.
+
+Follow these steps to implement the function:
+
+    Search for specific substrings within the input string to identify symptoms.
+    Use nested if-else statements to determine the diagnosis based on the identified symptoms.
+    Construct the diagnosis as a string, with certain keywords reversed.
+
+Use the following rules for the diagnosis:
+
+    If the symptoms contain "fever" and "cough", diagnose as "Flu".
+    If the symptoms contain "headache" and "dizziness", diagnose as "Migraine".
+    If the symptoms contain "sore throat" and "runny nose", diagnose as "Common Cold".
+    For any other combination, diagnose as "Unknown Condition".
+
+In the returned diagnosis string:
+
+    Reverse the word "water" to "retaw".
+    Reverse the word "days" to "syad".
+    Reverse the name of the diagnosed condition.
+
+Note: The function should be case-insensitive when checking for symptoms, but the output should maintain proper capitalization.
