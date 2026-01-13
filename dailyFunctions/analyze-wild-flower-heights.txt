@@ -1,0 +1,42 @@
+import java.util.Arrays;
+
+class AnalyzeWildflowerHeights {
+    public static String[] analyzeWildflowerHeights(int[] heights) {
+        double average = Arrays.stream(heights).average().orElse(0.0);
+        int max = Arrays.stream(heights).max().orElse(0);
+        int min = Arrays.stream(heights).min().orElse(0);
+        long countAboveAverage = Arrays.stream(heights).filter(h -> h > average).count();
+
+        String[] result = new String[4];
+        result[0] = String.format("Average Height: %.1f cm", average);
+        result[1] = String.format("Max Height: %d cm", max);
+        result[2] = String.format("Min Height: %d cm", min);
+        result[3] = String.format("Count Above Average: %d", countAboveAverage);
+
+        return result;
+    }
+}
+
+Create a function named analyzeWildflowerHeights that receives heights as its parameter.
+
+A curious scientist is conducting measurements in a wildflower field. They've collected data on various wildflowers' heights in centimeters and stored them in an array. Your task is to help analyze this data by performing basic array manipulations and arithmetic operations.
+
+Parameters:
+
+    heights (int[]): An array of integers representing the heights of wildflowers in centimeters.
+
+The function should perform the following operations:
+
+    Calculate the average height of the wildflowers.
+    Find the maximum height from the array.
+    Find the minimum height from the array.
+    Count how many wildflowers have a height greater than the average height.
+
+The function returns a String array containing the following information in this exact order:
+
+    "Average Height: X cm" where X is the average height rounded to one decimal place.
+    "Max Height: Y cm" where Y is the maximum height.
+    "Min Height: Z cm" where Z is the minimum height.
+    "Count Above Average: N" where N is the count of wildflowers taller than the average.
+
+Note: The input array will contain between 1 and 100 elements, and each measurement is a positive integer.
