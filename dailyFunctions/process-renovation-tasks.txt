@@ -1,0 +1,57 @@
+class ProcessRenovationTasks {
+    public static String processRenovationTasks(String[] tasks, int budgetLimit) {
+        StringBuilder taskList = new StringBuilder();
+        int totalCost = 0;
+        boolean firstTask = true;
+        
+        for (String task : tasks) {
+            String[] parts = task.split(":");
+            String taskName = parts[0];
+            int cost = Integer.parseInt(parts[1]);
+            String status = parts[2];
+            
+            // Skip completed tasks
+            if (status.equals("completed")) {
+                continue;
+            }
+            
+            // Increase cost by 10% for overdue tasks
+            if (status.equals("overdue")) {
+                cost = (int) (cost * 1.1);
+            }
+            
+            // Add to task list
+            if (!firstTask) {
+                taskList.append(", ");
+            }
+            taskList.append(taskName).append("($").append(cost).append(")");
+            firstTask = false;
+            
+            totalCost += cost;
+        }
+        
+        // Determine budget status
+        String budgetStatus = totalCost <= budgetLimit ? "Within" : "Over";
+        
+        return "Tasks: " + taskList.toString() + " | Total: $" + totalCost + " | Budget: " + budgetStatus;
+    }
+}
+
+Write a function processRenovationTasks that takes tasks and budgetLimit and returns a formatted string with remaining tasks and total cost.
+
+The function parses renovation task data, increases costs by 10% for overdue tasks, filters out completed tasks, and calculates if the remaining work fits within budget.
+
+Logic:
+
+    Parse each task string to extract name, cost, and status
+    Increase cost by 10% for tasks with "overdue" status
+    Filter out tasks with "completed" status
+    Calculate total cost of remaining tasks
+    Format output with task list and budget status
+
+Parameters:
+
+    tasks (String[]): Array of task strings in format "taskName:cost:status"
+    budgetLimit (int): Maximum budget available for remaining tasks
+
+Returns: Formatted string with remaining tasks and budget status. Format: Tasks: task1($cost1), task2($cost2) | Total: $totalCost | Budget: Within/Over
