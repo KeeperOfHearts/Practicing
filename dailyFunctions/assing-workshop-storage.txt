@@ -1,0 +1,51 @@
+class AssignWorkshopStorage {
+    public static String[] assignWorkshopStorage(String[] toolNames, int shelfCapacity) {
+        String[] assignments = new String[shelfCapacity];
+        int count = 0;
+        
+        for (String tool : toolNames) {
+            if (tool == null || tool.isEmpty()) {
+                continue;
+            }
+            
+            if (count >= shelfCapacity) {
+                break;
+            }
+            
+            if (tool.contains("wrench")) {
+                assignments[count] = "coated-container";
+            } else if (tool.contains("bolt") || tool.contains("screw")) {
+                assignments[count] = "spherule-box";
+            } else {
+                assignments[count] = "shelf";
+            }
+            
+            count++;
+        }
+        
+        // Return only the assignments for processed tools
+        String[] result = new String[count];
+        for (int i = 0; i < count; i++) {
+            result[i] = assignments[i];
+        }
+        
+        return result;
+    }
+}
+
+Write a function assignWorkshopStorage that takes toolNames, shelfCapacity and returns a string array mapping each tool to its storage type.
+
+The function assigns storage locations for workshop tools: "coated-container" for tools containing "wrench", "spherule-box" for tools containing "bolt" or "screw", and "shelf" for all other tools.
+
+Conditions:
+
+    Skip any empty or null tool names using continue
+    Stop processing when shelfCapacity tools have been assigned using break
+    Return only the assignments for processed tools
+
+Parameters:
+
+    toolNames (String[]): Array of tool names to process
+    shelfCapacity (int): Maximum number of tools to assign storage
+
+Returns: String array of storage assignments for processed tools. Format: ["coated-container", "shelf", "spherule-box"]
