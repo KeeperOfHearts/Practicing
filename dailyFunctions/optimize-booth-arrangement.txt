@@ -1,0 +1,25 @@
+class OptimizeBoothArrangement {
+    public static String optimizeBoothArrangement(int vendorIdStart, int vendorIdEnd, String arrangementString) {
+        return arrangementString;
+    }
+}
+
+Write a function optimizeBoothArrangement that takes vendorIdStart, vendorIdEnd, arrangementString and returns the optimized booth arrangement string.
+
+The function finds perfect citrus numbers (where sum of proper divisors equals the number) in the vendor ID range, then applies game theory optimization to determine if the arrangement string should be reversed.
+
+Logic:
+
+    Find all perfect citrus numbers between vendorIdStart and vendorIdEnd (inclusive)
+    Calculate game theory score: sum of all perfect numbers found
+    If score is even, return arrangement string as-is
+    If score is odd, return reversed arrangement string
+    If no perfect numbers found (score = 0), return original string
+
+Parameters:
+
+    vendorIdStart (int): Starting vendor ID range
+    vendorIdEnd (int): Ending vendor ID range
+    arrangementString (String): Initial booth arrangement layout
+
+Returns: Optimized arrangement string (original or reversed based on perfect number score). Format: "ABCD" or "DCBA"
