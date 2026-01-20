@@ -1,0 +1,46 @@
+class ReportMeteorActivity {
+    public static String reportMeteorActivity(int initialCount, int adjustments) {
+        String specialNumbers = "";
+        byte modifier = (initialCount % 2 == 1) ? (byte) -1 : (byte) 1;
+        for (int i = 1;i <= adjustments;i++ ) {
+            initialCount += 1 * modifier;
+            modifier *= -1;
+            if (initialCount == 7) specialNumbers += "7, ";
+            if (initialCount == 13) specialNumbers += "13, ";
+            if (initialCount == 21) specialNumbers += "21, ";
+        }
+        if (specialNumbers.length() > 0) {
+            specialNumbers = specialNumbers.substring(0, specialNumbers.length() -2);
+        } else specialNumbers = "None";
+        return String.format("Final count: %d, Special numbers encountered: %s", initialCount, specialNumbers);
+    }
+}
+
+Create a function named reportMeteorActivity that receives initialCount and adjustments as its parameters.
+
+You are a pirate captain using an old handset phone to report strange meteoritic activity at sea. Your task is to create a function that simulates the reporting process, keeping track of meteor sightings and identifying special numbers during the count.
+
+Parameters:
+
+    initialCount (int): The initial number of meteors sighted (1 ≤ initialCount ≤ 100).
+    adjustments (int): The number of times you adjust the meteor count (0 ≤ adjustments ≤ 50).
+
+The function should perform the following steps:
+
+    Start with the initialCount of meteors.
+    For each adjustment:
+        If the current count is even, increment the count by 1.
+        If the current count is odd, decrement the count by 1.
+    After each adjustment, check if the current count is a special number:
+        7: Lucky number
+        13: Unlucky number
+        21: Pirate's favorite number
+    Keep track of any special numbers encountered during the adjustments.
+
+The function returns a string in the following format:
+
+"Final count: [finalCount], Special numbers encountered: [specialNumbers]"
+
+Where [finalCount] is the final number of meteors after all adjustments, and [specialNumbers] is a comma-separated list of special numbers encountered (in the order they were encountered) or "None" if no special numbers were encountered.
+
+Note: Use the increment (++) and decrement (--) operators for adjusting the count.
