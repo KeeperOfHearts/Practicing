@@ -1,0 +1,125 @@
+import java.util.HashMap;
+import java.util.Map;
+
+class CompareAncientTexts {
+    public static boolean compareAncientTexts(String fragment1, String fragment2, int method) {
+        switch (method) {
+            case 1:
+                return bitPatternSimilarity(fragment1, fragment2);
+            case 2:
+                return substringFrequencyAnalysis(fragment1, fragment2);
+            case 3:
+                return characterSetComparison(fragment1, fragment2);
+            default:
+                return false;
+        }
+    }
+
+    private static boolean bitPatternSimilarity(String fragment1, String fragment2) {
+        int matchingBits = 0;
+        int totalBits = 0;
+        int minLength = Math.min(fragment1.length(), fragment2.length());
+
+        for (int i = 0; i < minLength; i++) {
+            int xor = fragment1.charAt(i) ^ fragment2.charAt(i);
+            matchingBits += Integer.bitCount(~xor & 0xFF);
+            totalBits += 8;
+        }
+
+        double similarityScore = (double) matchingBits / totalBits;
+        return similarityScore > 0.7;
+    }
+
+    private static boolean substringFrequencyAnalysis(String fragment1, String fragment2) {
+        Map<String, Integer> freq1 = getSubstringFrequency(fragment1);
+        Map<String, Integer> freq2 = getSubstringFrequency(fragment2);
+
+        int matchingSubstrings = 0;
+        int totalSubstrings = freq1.size() + freq2.size();
+
+        for (String substring : freq1.keySet()) {
+            if (freq2.containsKey(substring)) {
+                matchingSubstrings += Math.min(freq1.get(substring), freq2.get(substring));
+            }
+        }
+
+        double similarityScore = (double) (2 * matchingSubstrings) / totalSubstrings;
+        return similarityScore > 0.7;
+    }
+
+    private static Map<String, Integer> getSubstringFrequency(String fragment) {
+        Map<String, Integer> frequency = new HashMap<>();
+        for (int i = 0; i <= fragment.length() - 3; i++) {
+            String substring = fragment.substring(i, i + 3);
+            frequency.put(substring, frequency.getOrDefault(substring, 0) + 1);
+        }
+        return frequency;
+    }
+
+    private static boolean characterSetComparison(String fragment1, String fragment2) {
+        long bitVector1 = createBitVector(fragment1);
+        long bitVector2 = createBitVector(fragment2);
+
+        long commonChars = bitVector1 & bitVector2;
+        long allChars = bitVector1 | bitVector2;
+
+        double similarityScore = (double) Long.bitCount(commonChars) / Long.bitCount(allChars);
+        return similarityScore > 0.7;
+    }
+
+    private static long createBitVector(String fragment) {
+        long bitVector = 0;
+        for (char c : fragment.toCharArray()) {
+            if (c >= 'a' && c <= 'z') {
+                bitVector |= 1L << (c - 'a');
+            }
+        }
+        return bitVector;
+    }
+}
+
+Create a function named compareAncientTexts that receives fragment1, fragment2, and method as its parameters.
+
+As a linguistic researcher studying ancient texts in a cluttered library, you've developed an advanced system to compare text fragments. Your task is to implement this system using bit manipulation and advanced string comparison techniques.
+
+The function should determine if two given text fragments are similar enough to be considered part of the same ancient text, using one of three comparison methods:
+
+    Bit pattern similarity
+    Substring frequency analysis
+    Character set comparison
+
+Implement the following comparison methods:
+
+1. Bit pattern similarity (method 1):
+
+    Convert each character in both fragments to its ASCII value.
+    Use bitwise operations to compare the bit patterns of corresponding characters.
+    Calculate a similarity score based on matching bits.
+
+2. Substring frequency analysis (method 2):
+
+    Generate all substrings of length 3 from both fragments.
+    Compare the frequency of these substrings in both fragments.
+    Calculate a similarity score based on matching substring frequencies.
+
+3. Character set comparison (method 3):
+
+    Create a bit vector for each fragment representing the presence or absence of each possible character.
+    Use bitwise operations to compare these bit vectors.
+    Calculate a similarity score based on the similarity of the character sets.
+
+For each method, if the calculated similarity score exceeds a predefined threshold of 0.7 (70% similarity), return true; otherwise, return false.
+
+Parameters:
+
+    fragment1 (String): The first text fragment to compare.
+    fragment2 (String): The second text fragment to compare.
+    method (int): An integer (1, 2, or 3) representing the comparison method to use.
+
+The function returns a boolean value: true if the fragments are considered similar enough, false otherwise.
+
+Constraints:
+
+    The input fragments will be non-empty strings consisting of lowercase letters and spaces only.
+    The length of each fragment will not exceed 1000 characters.
+    The method parameter will always be 1, 2, or 3.
