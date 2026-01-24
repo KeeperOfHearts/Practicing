@@ -1,0 +1,32 @@
+class GenerateRetreatPlan {
+    public static String[] generateRetreatPlan(String[] guestLogs, int maxSupplies) {
+        int length = (guestLogs.length > maxSupplies) ? maxSupplies : guestLogs.length;
+        if (length > 24) length = 24;
+        String[] result = new String[length];
+        for (int i = 0;i < result.length;i++) {
+            String[] values = guestLogs[i].split(":");
+            result[i] = String.format("%s arrives at %s:%s", values[0], Integer.toBinaryString(Integer.parseInt(values[1])), values[2]);
+        }
+        return result;
+    }
+}
+
+Write a function generateRetreatPlan that takes guestLogs and maxSupplies and returns a formatted schedule array.
+
+The function processes guest arrival logs for your Methodist church group's mountain cabin retreat, converting arrival times to a special binary format and managing supply limitations.
+
+Logic:
+
+    Parse each log entry in "Name:HH:MM" format to extract name, hour, and minute
+    Convert the hour (0-23) to its binary string representation
+    Format each entry as "Name arrives at binaryHour:MM"
+    Use continue to skip processing when supply count exceeds maxSupplies
+    Use break to stop after processing 24 entries total
+    Track supplies used (increment by 1 for each processed guest)
+
+Parameters:
+
+    guestLogs (String[]): Array of guest arrival logs in "Name:HH:MM" format
+    maxSupplies (int): Maximum number of supply packages available
+
+Returns: String array of formatted arrival schedules. Format: 
