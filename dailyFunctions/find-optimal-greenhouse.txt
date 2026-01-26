@@ -1,0 +1,40 @@
+class FindOptimalGreenhouse {
+    public static String findOptimalGreenhouse(int temperature, int humidity, String sunlight) {
+        if (temperature > 25 && humidity > 60 && sunlight.equals("Full")) {
+            return "Greenhouse A";
+        } else if (temperature >= 15 && humidity >= 40 && sunlight.equals("Partial")) {
+            return "Greenhouse B";
+        } else if (temperature < 15 && humidity < 40 && sunlight.equals("Shade")) {
+            return "Greenhouse C";
+        } else return "No suitable greenhouse";
+    }
+}
+
+Create a function named findOptimalGreenhouse that receives temperature, humidity, and sunlight as its parameters.
+
+This function aims to determine the optimal greenhouse for a plant species based on its environmental requirements.
+
+The botanical garden has three greenhouses with specific conditions:
+
+    Greenhouse A: Temperature > 25°C, Humidity > 60%, Full sunlight
+    Greenhouse B: Temperature between 15°C and 25°C (inclusive), Humidity between 40% and 60% (inclusive), Partial sunlight
+    Greenhouse C: Temperature < 15°C, Humidity < 40%, Shade
+
+Implement the function to take the given environmental factors and return the appropriate greenhouse for the plant.
+
+Use the following criteria to determine the greenhouse:
+
+    If the temperature is above 25°C, humidity is above 60%, and the plant requires full sunlight, it should be placed in Greenhouse A.
+    If the temperature is between 15°C and 25°C (inclusive), humidity is between 40% and 60% (inclusive), and the plant requires partial sunlight, it should be placed in Greenhouse B.
+    If the temperature is below 15°C, humidity is below 40%, and the plant requires shade, it should be placed in Greenhouse C.
+    If the environmental factors do not match any of the greenhouse criteria, return "No suitable greenhouse".
+
+Note: The sunlight parameter will be provided as a string, either "Full", "Partial", or "Shade".
+
+Parameters:
+
+    temperature (int): The temperature requirement of the plant species in degrees Celsius.
+    humidity (int): The humidity requirement of the plant species in percentage.
+    sunlight (String): The sunlight requirement of the plant species, either "Full", "Partial", or "Shade".
+
+The function returns a string indicating the optimal greenhouse for the plant species based on the provided environmental factors. If no suitable greenhouse is found, it returns "No suitable greenhouse".
