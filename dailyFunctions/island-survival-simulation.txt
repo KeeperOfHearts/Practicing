@@ -1,0 +1,126 @@
+import java.util.Arrays;
+
+class IslandSurvivalSimulation {
+    public static int islandSurvivalSimulation(int initialFood, int initialWater, boolean[] tools, int[] resources, int[] weather, int rescueDays) {
+        int food = initialFood;
+        int water = initialWater;
+        int energy = 100;
+        int shelter = 0;
+        int days = 0;
+
+        while (days < rescueDays && food > 0 && water > 0 && energy > 0) {
+            int dailyWeather = weather[days % weather.length];
+            
+            // Consume resources
+            food--;
+            water--;
+            energy = Math.min(100, energy + 10);
+
+            // Perform survival activities
+            if (dailyWeather != 2) { // Not stormy
+                if (shelter < 100) {
+                    shelter = buildShelter(shelter, tools, resources);
+                } else {
+                    int[] result = searchForResources(tools, resources, dailyWeather);
+                    food += result[0];
+                    water += result[1];
+                }
+                energy -= 20;
+            } else {
+                energy -= 10; // Less energy consumed during storms
+            }
+
+            // Handle rain
+            if (dailyWeather == 1) {
+                water = Math.min(water + 2, initialWater * 2);
+            }
+
+            // Unexpected events
+            if (days % 7 == 0 && days > 0) {
+                handleUnexpectedEvent(tools, resources);
+            }
+
+            days++;
+        }
+
+        return Math.min(days, rescueDays);
+    }
+
+    private static int buildShelter(int currentShelter, boolean[] tools, int[] resources) {
+        boolean hasAxe = tools[0];
+        boolean hasRope = tools[2];
+        int wood = resources[2];
+
+        if ((hasAxe ^ hasRope) && wood > 0) {
+            return Math.min(100, currentShelter + 10);
+        } else if (hasAxe && hasRope && wood > 1) {
+            return Math.min(100, currentShelter + 20);
+        }
+        return currentShelter + 5;
+    }
+
+    private static int[] searchForResources(boolean[] tools, int[] resources, int weather) {
+        int foodFound = 0;
+        int waterFound = 0;
+
+        boolean canFish = tools[1] && resources[1] > 0;
+        boolean canForage = resources[0] > 0;
+
+        if (weather == 0 && (canFish ^ canForage)) { // Sunny and can either fish or forage
+            foodFound += 2;
+        } else if (!(canFish | canForage)) { // Can neither fish nor forage
+            foodFound += 1;
+        }
+
+        if (tools[3] && weather != 0) { // Has container and not sunny
+            waterFound += 1;
+        }
+
+        return new int[]{foodFound, waterFound};
+    }
+
+    private static void handleUnexpectedEvent(boolean[] tools, int[] resources) {
+        int eventType = (int) (Math.random() * 3);
+        switch (eventType) {
+            case 0: // Tool breaks
+                int toolIndex = (int) (Math.random() * tools.length);
+                tools[toolIndex] = false;
+                break;
+            case 1: // Resource depletion
+                int resourceIndex = (int) (Math.random() * resources.length);
+                resources[resourceIndex] = Math.max(0, resources[resourceIndex] - 1);
+                break;
+            case 2: // Resource abundance
+                resourceIndex = (int) (Math.random() * resources.length);
+                resources[resourceIndex] += 2;
+                break;
+        }
+    }
+}
+
+Create a function named islandSurvivalSimulation that receives initialFood, initialWater, tools, resources, weather, and rescueDays as its parameters.
+
+Your task is to simulate survival on a tropical island after a shipwreck, determining how many days the survivor can last given the initial conditions and resources.
+
+Implement the simulation using complex loops and logical operators to model the passage of time and decision-making processes. Each day, the survivor must manage food and water consumption, energy levels, and perform survival activities such as foraging, building shelter, and crafting tools.
+
+Parameters:
+
+    initialFood (int): The amount of food available from the shipwreck (in days).
+    initialWater (int): The amount of clean water available from the shipwreck (in days).
+    tools (boolean[]): An array representing the availability of various tools (e.g., knife, rope, tarp).
+    resources (int[]): An array representing the abundance of different natural resources on the island (e.g., fruits, fish, wood).
+    weather (int[]): An array representing the weather conditions for each day (0: sunny, 1: rainy, 2: stormy).
+    rescueDays (int): The number of days expected before a rescue attempt.
+
+The function returns an integer representing the number of days the survivor managed to stay alive on the island. If the survivor is rescued, it should return the number of days until rescue.
+
+Implement the following in your solution:
+
+    Use nested loops to simulate days, weeks, and months on the island.
+    Implement a recursive function to represent repeating activities like searching for food or building shelter.
+    Use logical operators (XOR, NAND, NOR) to determine the success of survival activities based on multiple conditions.
+    Employ loop control statements to handle unexpected events or changes in the survival strategy.
+    Manage resources carefully and implement decision-making algorithms to optimize survival chances.
+
+Ensure your implementation is within 50-99 lines of code.
