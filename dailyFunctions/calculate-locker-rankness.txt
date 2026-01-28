@@ -1,0 +1,49 @@
+class CalculateLockerRankness {
+    public static String calculateLockerRankness(int workoutIntensity, int workoutDuration, int consecutiveDays) {
+        int rankness = (workoutIntensity * workoutDuration * consecutiveDays) / 2;
+        if (rankness < 21) {
+            return String.format("After %d days of intense training, the locker's rankness level is: %s", consecutiveDays, "Fresh as a daisy");
+        } else if (rankness < 41) {
+            return String.format("After %d days of intense training, the locker's rankness level is: %s", consecutiveDays, "Slight whiff");
+        } else if (rankness < 61) {
+            return String.format("After %d days of intense training, the locker's rankness level is: %s", consecutiveDays, "Noticeable odor");
+        } else if (rankness < 81) {
+            return String.format("After %d days of intense training, the locker's rankness level is: %s", consecutiveDays, "Pungent aroma");
+        } else if (rankness < 101) {
+            return String.format("After %d days of intense training, the locker's rankness level is: %s", consecutiveDays, "Hazardous environment");
+        } else {
+            return String.format("After %d days of intense training, the locker's rankness level is: %s", consecutiveDays, "Biohazard alert!");
+        }
+    }
+}
+
+Create a function named calculateLockerRankness that receives workoutIntensity, workoutDuration, and consecutiveDays as its parameters.
+
+The function simulates a professional athlete's training schedule and calculates the "rankness" level of their locker based on the intensity and duration of their workouts over consecutive days.
+
+Calculate the rankness score using the following formula:
+
+
+rankness = (workoutIntensity * workoutDuration * consecutiveDays) / 2
+
+Then, determine the rankness description based on the calculated score:
+
+    0-20: "Fresh as a daisy"
+    21-40: "Slight whiff"
+    41-60: "Noticeable odor"
+    61-80: "Pungent aroma"
+    81-100: "Hazardous environment"
+    >100: "Biohazard alert!"
+
+Parameters:
+
+    workoutIntensity (int): A value from 1 to 10 representing the intensity of the athlete's daily workout.
+    workoutDuration (int): The number of hours the athlete trains each day.
+    consecutiveDays (int): The number of consecutive days the athlete has been training.
+
+The function returns a formatted string describing the state of the locker in the following format:
+
+
+"After {consecutiveDays} days of intense training, the locker's rankness level is: {ranknessDescription}"
+
+Where {consecutiveDays} is the input value and {ranknessDescription} is based on the calculated rankness score.
