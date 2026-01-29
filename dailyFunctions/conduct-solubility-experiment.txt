@@ -1,0 +1,66 @@
+import java.util.Arrays;
+
+class ConductSolubilityExperiment {
+    public static String[] conductSolubilityExperiment(String[] fabricSamples, int[] chemicalStrengths, int experimentDuration) {
+        String[] results = new String[fabricSamples.length];
+        
+        for (int i = 0; i < fabricSamples.length; i++) {
+            String fabric = fabricSamples[i];
+            int chemicalStrength = chemicalStrengths[i % chemicalStrengths.length];
+            
+            double solubilityRate = (chemicalStrength * experimentDuration) / 100.0;
+            
+            if (fabric.contains("cotton")) {
+                solubilityRate += 5;
+            }
+            if (fabric.contains("polyester")) {
+                solubilityRate -= 3;
+            }
+            
+            int halfLength = chemicalStrengths.length / 2;
+            double averageStrength = Arrays.stream(chemicalStrengths, 0, halfLength).average().orElse(0);
+            if (averageStrength > 50) {
+                solubilityRate += 2;
+            }
+            
+            String solubilityStatus;
+            if (solubilityRate < 20) {
+                solubilityStatus = "Low Solubility";
+            } else if (solubilityRate <= 50) {
+                solubilityStatus = "Medium Solubility";
+            } else {
+                solubilityStatus = "High Solubility";
+            }
+            
+            results[i] = fabric + ": " + solubilityStatus;
+        }
+        
+        return results;
+    }
+}
+
+Create a function named conductSolubilityExperiment that receives fabricSamples, chemicalStrengths, and experimentDuration as its parameters.
+
+You are a scientist conducting an experiment to determine the solubility of various fabric samples when exposed to different chemical solutions. Your task is to process the fabric samples and record the results of the experiment.
+
+The function should process each fabric sample by applying chemical treatments and calculating its solubility rate. Use the following steps to conduct the experiment:
+
+    Iterate through each fabric sample.
+    Calculate the initial solubility rate for each fabric using the formula: solubilityRate = (chemicalStrength * experimentDuration) / 100.
+    Adjust the solubility rate using increment and decrement operators:
+        If the fabric name contains 'cotton', increment the solubility rate by 5.
+        If the fabric name contains 'polyester', decrement the solubility rate by 3.
+    Use array slicing to calculate the average chemical strength of the first half of the chemicalStrengths array. If this average is greater than 50, increment the solubility rate by 2.
+    Determine the final solubility status:
+        If solubility rate is less than 20: "Low Solubility"
+        If solubility rate is between 20 and 50: "Medium Solubility"
+        If solubility rate is greater than 50: "High Solubility"
+    Record the result for each fabric sample in the format: "[Fabric Name]: [Solubility Status]"
+
+Parameters:
+
+    fabricSamples (String[]): An array of fabric types to be tested.
+    chemicalStrengths (int[]): An array of chemical strength levels for each treatment.
+    experimentDuration (int): The duration of the experiment in hours.
+
+The function returns a String array containing the results of the experiment for each fabric sample.
