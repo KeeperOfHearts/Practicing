@@ -1,0 +1,41 @@
+import java.util.Arrays;
+
+class CreateFieldNotes {
+    public static String createFieldNotes(String[] animals, String[] observations) {
+        if (animals.length == 0 || observations.length == 0) {
+            return "No observations made today.";
+        }
+
+        StringBuilder fieldNotes = new StringBuilder("Riverbank Wildlife Observations:\n");
+
+        for (int i = 0; i < animals.length && i < observations.length; i++) {
+            fieldNotes.append(String.format("%d. %s: %s\n", i + 1, animals[i], observations[i]));
+        }
+
+        fieldNotes.append("End of observations.");
+
+        return fieldNotes.toString();
+    }
+}
+
+Create a function named createFieldNotes that receives animals and observations as its parameters.
+
+As a curious naturalist exploring a riverbank, you've been recording observations about the local wildlife. Your task is to create a formatted field note entry from your raw data.
+
+The function should combine the animal names with their corresponding observations, number each entry, and add a simple header and footer to the notes. If no observations were made (i.e., the arrays are empty), the function should return a message indicating this.
+
+Parameters:
+
+    animals (String[]): An array containing names of river animals.
+    observations (String[]): An array containing brief observations about each animal.
+
+The function returns a String representing the formatted field notes.
+
+The field notes should be formatted as follows:
+
+    Start with the header: "Riverbank Wildlife Observations:"
+    For each animal and observation pair, create a numbered entry: "[number]. [animal]: [observation]"
+    End with the footer: "End of observations."
+    If the arrays are empty, return "No observations made today."
+
+Note: Ensure proper capitalization and punctuation in your output.
