@@ -1,0 +1,25 @@
+class FormatShrimpReport {
+    public static String formatShrimpReport(String speciesName, int count, float length, String color, String habitat) {
+        return String.format("Shrimp Species: %s\nCount: %s\nAverage Length: %s cm\nColor: %s\nHabitat: %s", speciesName, count, Math.round(length*10)/10.0, color, habitat);
+    }
+}
+
+Create a function named formatShrimpReport that receives speciesName, count, length, color, and habitat as its parameters.
+
+The function should format the input information into a structured report for a curious bird watcher observing rare shrimp species at a coastal wetland.
+
+Format the report as follows:
+
+"Shrimp Species: [speciesName]\nCount: [count]\nAverage Length: [length] cm\nColor: [color]\nHabitat: [habitat]"
+
+Make sure to format the length to one decimal place.
+
+Parameters:
+
+    speciesName (String): The name of the shrimp species observed.
+    count (int): The number of shrimp observed.
+    length (float): The average length of the shrimp in centimeters.
+    color (String): The primary color of the shrimp.
+    habitat (String): The specific habitat where the shrimp were observed.
+
+The function returns a String containing the formatted shrimp report.
