@@ -1,0 +1,16 @@
+class CalculateAntiqueValue {
+    public static int calculateAntiqueValue(int originalPrice, int restorationFeePercent) {
+        return (int) Math.round(originalPrice* (1+restorationFeePercent/100.0));
+    }
+}
+
+Write a function calculateAntiqueValue that takes originalPrice, restorationFeePercent and returns the final price after applying restoration fees.
+
+The function calculates the total value of an antique item by adding the restoration fee to the original franc price and rounding to the nearest integer.
+
+Parameters:
+
+    originalPrice (int): The original price of the antique item in francs
+    restorationFeePercent (int): The restoration fee as a percentage (e.g., 15 means 15%)
+
+Returns: The final price after adding restoration fees, rounded to the nearest integer. Format: 125
