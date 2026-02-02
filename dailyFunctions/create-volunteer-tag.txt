@@ -1,0 +1,16 @@
+class CreateVolunteerTag {
+    public static String createVolunteerTag(int plantId, String groupName) {
+        return groupName+"_"+Integer.toBinaryString(plantId);
+    }
+}
+
+Write a function createVolunteerTag that takes plantId, groupName and returns a volunteer assignment tag.
+
+The function converts the plant ID to binary format and concatenates it with the group name to create a unique identification tag for the community garden cleanup.
+
+Parameters:
+
+    plantId (int): The decimal plant identification number
+    groupName (String): The cleanup group identifier
+
+Returns: A string combining the group name and binary plant ID. Format: groupName_binaryId
