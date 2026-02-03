@@ -1,0 +1,25 @@
+class ClassifyExhibit {
+    public static String classifyExhibit(String name) {
+        if (name.contains("frog") || name.contains("salamander")) return "Amphibian Exhibit";
+        if (name.contains("snake") || name.contains("lizard")) return "Reptile Exhibit";
+        if (name.contains("palm") ) return "Plant Exhibit";
+        return  "Exhibit not found";
+    }
+}
+
+Write a function classifyExhibit that takes name and returns the appropriate exhibit category based on keywords in the animal or plant name.
+
+The function checks for specific keywords to determine which exhibit section the specimen belongs to at the nature center.
+
+Conditions:
+
+    If name contains "frog" or "salamander" → return "Amphibian Exhibit"
+    If name contains "snake" or "lizard" → return "Reptile Exhibit"
+    If name contains "palm" → return "Plant Exhibit"
+    If no keywords match → return "Exhibit not found"
+
+Parameters:
+
+    name (String): The name of the animal or plant specimen
+
+Returns: String indicating the exhibit category. Format: "Amphibian Exhibit", "Reptile Exhibit", "Plant Exhibit", or "Exhibit not found"
