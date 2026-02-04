@@ -1,0 +1,26 @@
+class TeaShopProfitAndDisplay {
+    public static String teaShopProfitAndDisplay(String[] teaNames, int[] profits) {
+        int sum = 0;
+        for (int profit : profits) sum += profit;
+        return String.format("Total profit: $%d | Floral Display: %s", sum, String.join("🌸", teaNames));
+    }
+}
+
+Create a function named teaShopProfitAndDisplay that receives teaNames and profits as its parameters.
+
+As the owner of a bustling tea shop, you need to calculate your daily profits and create a beautiful floral display message to enhance your shop's ambiance. This function will help you automate these tasks.
+
+Your function should perform the following operations:
+
+    Calculate the total profit by summing up all the values in the profits array.
+    Create a floral display message by concatenating all the tea names from the teaNames array, separated by flower symbols (🌸).
+    Return a string that combines the total profit and the floral display message.
+
+Parameters:
+
+    teaNames (String[]): An array containing the names of tea varieties.
+    profits (int[]): An array containing the profits for each tea variety. The profits are in the same order as the tea names.
+
+The function returns a string in the format: "Total profit: $X | Floral Display: Tea1🌸Tea2🌸Tea3..."
+
+Note: Ensure that the calculated profit is formatted as a whole number (without decimal places) in the output string.
