@@ -1,0 +1,33 @@
+class DecipherAncientMessage {
+    public static String decipherAncientMessage(String message) {
+        String lowerCaseMessage = message.toLowerCase();
+        
+        if (lowerCaseMessage.contains("danger") || lowerCaseMessage.contains("beware")) {
+            return "warning";
+        } else if (lowerCaseMessage.contains("welcome") || lowerCaseMessage.contains("hello") || lowerCaseMessage.contains("greetings")) {
+            return "welcome";
+        } else {
+            return "unknown";
+        }
+    }
+}
+
+Create a function named decipherAncientMessage that receives message as its parameter.
+
+This function aims to decipher an ancient message found in a mysterious ruin and determine if it is a warning, a welcome message, or unknown.
+
+You are an adventurer exploring an ancient ruin. Inside, you discover various messages inscribed on the walls. Each message can be categorized as either a "warning", a "welcome" message, or "unknown" if its meaning is unclear. Your task is to decipher these messages based on their content.
+
+To categorize the messages, use the following criteria:
+
+    If the message contains the word "danger" or "beware" (case-insensitive), categorize it as a "warning".
+    If the message contains the word "welcome", "hello", or "greetings" (case-insensitive), categorize it as a "welcome" message.
+    If the message does not contain any of the keywords mentioned above, categorize it as "unknown".
+
+Implement the logic to analyze the message based on these criteria and return the appropriate category.
+
+Parameter:
+
+    message (String): The ancient message found in the ruin, which needs to be deciphered and categorized.
+
+The function returns a String representing the category of the message, which can be "warning", "welcome", or "unknown".
