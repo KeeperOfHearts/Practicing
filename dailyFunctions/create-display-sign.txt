@@ -1,0 +1,15 @@
+class CreateDisplaySign {
+    public static String createDisplaySign(String productName) {
+        return String.format("STALL: %s - FRESH", new StringBuilder(productName).reverse().toString());
+    }
+}
+
+Write a function createDisplaySign that takes productName and returns a formatted display sign.
+
+The function reverses the product name and formats it with "STALL: " prefix and " - FRESH" suffix for the farmer's market booth.
+
+Parameters:
+
+    productName (String): The name of the product to display
+
+Returns: A formatted display sign string. Format: STALL: [reversed product name] - FRESH
