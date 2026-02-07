@@ -1,0 +1,15 @@
+class CountTrainingTreats {
+    public static int countTrainingTreats(int commands) {
+        return commands;
+    }
+}
+
+Write a function countTrainingTreats that takes commands and returns the total number of treats earned.
+
+The function calculates how many treats a rescue dog earns by giving one treat for each successfully completed command during training.
+
+Parameters:
+
+    commands (int): Number of commands the dog will attempt during training
+
+Returns: Total number of treats earned (int). Each successful command earns exactly 1 treat.
