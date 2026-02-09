@@ -1,0 +1,22 @@
+class CreateSpecialtyMessage {
+    public static String createSpecialtyMessage(String fish, String location) {
+        if (fish.equals("muttonfish")) return "Muttonfish is a specialty in " + location + "!";
+        return "Your order for " + fish + " at " + location + " is confirmed.";
+    }
+}
+
+Write a function createSpecialtyMessage that takes fish, location and returns a formatted message string.
+
+The function checks if the fish is "muttonfish" and returns a specialty message, otherwise returns a standard order confirmation.
+
+Conditions:
+
+    If fish equals "muttonfish": return "Muttonfish is a specialty in [location]!"
+    Otherwise: return "Your order for [fish] at [location] is confirmed."
+
+Parameters:
+
+    fish (String): The type of fish ordered
+    location (String): The restaurant location name
+
+Returns: A formatted message string. Format: "Muttonfish is a specialty in Long Island!" or "Your order for salmon at Brooklyn is confirmed."
