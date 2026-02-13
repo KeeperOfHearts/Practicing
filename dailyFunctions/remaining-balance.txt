@@ -1,0 +1,7 @@
+class RemainingBalance {
+    public static float remainingBalance(float billAmount, float paymentMade) {
+        return billAmount - paymentMade;
+    }
+}
+
+Write a function remainingBalance that calculates how much a patient still owes after making a payment. Given the original bill amount and the payment made, return the remaining balance.
