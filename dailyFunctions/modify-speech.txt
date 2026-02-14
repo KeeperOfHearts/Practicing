@@ -1,0 +1,42 @@
+class ModifySpeech {
+    public static String[] modifySpeech(String[] words, int intensity) {
+        if (intensity < 3) {
+            String[] result = new String[words.length/2];
+            for (int i = 0;i < words.length / 2;i++) {
+                if (words[i].equals("butter")) words[i] = "revolution";
+                result[i] = words[i];
+            }
+            return result;
+        } else if (intensity > 3) {
+            for (int i = 0;i < words.length;i++) {
+                if (words[i].equals("butter")) words[i] = "revolution";
+                words[i] = words[i] + "!" ;
+            }
+            return words;
+        } else {
+            for (int i = 0;i < words.length;i++) {
+                if (words[i].equals("butter")) words[i] = "revolution";
+            }
+            return words;
+        }
+    }
+}
+
+
+Create a function named modifySpeech that receives words and intensity as its parameters.
+
+The function simulates a revolutionist's speech by manipulating an array of words based on certain conditions. It modifies the speech based on the intensity level, using array slicing and conditional statements.
+
+The function should modify the speech based on the following rules:
+
+    If the intensity is 1 or 2, return the first half of the words.
+    If the intensity is 3, return the original array of words.
+    If the intensity is 4 or 5, add an exclamation mark to the end of each word and return the entire array.
+    For any intensity level, if the word "butter" appears in the speech, replace it with "revolution" to emphasize the revolutionist's message.
+
+Parameters:
+
+    words (String[]): An array of strings representing the words in the speech.
+    intensity (int): An integer representing the intensity level of the speech (1 to 5).
+
+The function returns a String array containing the modified speech based on the given rules.
