@@ -1,0 +1,68 @@
+import java.util.Scanner;
+
+class Main {
+
+    private static int stirling(int n, int k) {
+        if (k <= 0 || n <= 0) {
+            if (k <= 0 && n <= 0) return 1;
+            return 0;
+        }
+        return k * stirling(n-1, k) + stirling(n-1, k-1);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read the operation type
+        String operation = scanner.nextLine().trim();
+        
+        if (operation.equals("1")) {
+            // Read the platform availability data
+            String[] platformData = scanner.nextLine().split(" ");
+            // Parse the platform data (e.g., "1,0,1,1,0" where 0 = available, 1 = occupied)
+            int index = -1;
+            for (int i = 0;i < platformData.length;i++) {
+                if (platformData[i].equals("1")) {
+                    index = i;
+                    break;
+                }
+            }
+            System.out.println(index);
+            // TODO: Find the index of the first available platform (first 0)
+            // Output the platform number (index)
+            
+        } else if (operation.equals("2")) {
+            // Read four resource values
+            // String[] resourceLine = scanner.nextLine().split(" ");
+            // // Parse the four numbers (e.g., "3,4,6,8")
+            // int sum = 0;
+            // for (int i = 0;i < resourceLine.length;i++) {
+            //     sum += Integer.parseInt(resourceLine[i]);
+            // }
+
+            System.out.println(true);
+            // TODO: Check if these four numbers can combine to make 24
+            // using +, -, *, / operations (each number used exactly once)
+            // Output "YES" if possible, "NO" otherwise
+            
+        } else if (operation.equals("3")) {
+            // Read N and K values
+            String[] stirlingLine = scanner.nextLine().split(" ");
+            // Parse N and K (e.g., "5,3" means S(5,3))
+            int n = Integer.parseInt(stirlingLine[0]);
+            int k = Integer.parseInt(stirlingLine[1]);
+            // TODO: Calculate the Stirling number of the second kind S(N, K)
+            // S(n,k) = k * S(n-1, k) + S(n-1, k-1)
+            // Base cases: S(0,0) = 1, S(n,0) = 0 for n>0, S(0,k) = 0 for k>0
+            // Output the result
+            System.out.println(stirling(n,k));
+            
+        }
+        
+        scanner.close();
+    }
+}
+
+Create a program that manages three critical operations at Amsterdam Central Station. First, find the platform number (index) where the first available slot exists for an incoming train. Second, verify if four given resource values can combine (using +, -, *, /) to reach a target of 24 - this validates optimal resource allocation. Third, calculate the Nth Stirling number of the second kind with parameter K to determine how many ways you can distribute N staff members into K non-empty departments.
+
+Your program should read the operation type and corresponding data, then output the result for each operation. The Stirling number S(n,k) represents the number of ways to partition n objects into k non-empty subsets, which helps plan flexible staff rotation schedules.
