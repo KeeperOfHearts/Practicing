@@ -1,0 +1,33 @@
+class FindSoulPath {
+    public static String findSoulPath(String inscription) {
+        boolean containsLove = inscription.toLowerCase().contains("love");
+        boolean containsWisdom = inscription.toLowerCase().contains("wisdom");
+        
+        if (containsLove && containsWisdom) {
+            return "Sanctuary of Transcendence";
+        } else if (containsLove) {
+            return "Temple of Compassion";
+        } else if (containsWisdom) {
+            return "Monastery of Enlightenment";
+        } else {
+            return "Start";
+        }
+    }
+}
+
+Create a function named findSoulPath that receives inscription as its parameter.
+
+This function determines the path a soul should take based on the inscription etched upon their heart during their journey through the oversoul.
+
+Possible paths:
+
+    If the inscription contains "love", the path leads to the "Temple of Compassion".
+    If the inscription contains "wisdom", the path leads to the "Monastery of Enlightenment".
+    If the inscription contains both "love" and "wisdom", the path leads to the "Sanctuary of Transcendence".
+    If the inscription contains neither "love" nor "wisdom", the path leads back to the "Start".
+
+Parameters:
+
+    inscription (String): The inscription etched upon the soul's heart.
+
+The function returns a String indicating the path the soul should take based on the inscription.
