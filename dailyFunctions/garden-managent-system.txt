@@ -1,0 +1,106 @@
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String command = scanner.nextLine().trim();
+        
+        if (command.equals("LEADERBOARD")) {
+            handleLeaderboard(scanner);
+        } else if (command.equals("PLANT_SEQUENCE")) {
+            handlePlantSequence(scanner);
+        } else if (command.equals("ROTATE_SCHEDULE")) {
+            handleRotateSchedule(scanner);
+        }
+        
+        scanner.close();
+    }
+    
+    private static void handleLeaderboard(Scanner scanner) {
+        int n = Integer.parseInt(scanner.nextLine().trim());
+        Map<String, Integer> scores = new HashMap<>();
+        
+        for (int i = 0; i < n; i++) {
+            String line = scanner.nextLine().trim();
+            String[] parts = line.split(" ");
+            String name = parts[0];
+            int points = Integer.parseInt(parts[1]);
+            
+            scores.put(name, scores.getOrDefault(name, 0) + points);
+        }
+        
+        List<Map.Entry<String, Integer>> leaderboard = new ArrayList<>(scores.entrySet());
+        leaderboard.sort((a, b) -> {
+            int scoreCompare = b.getValue().compareTo(a.getValue());
+            if (scoreCompare != 0) {
+                return scoreCompare;
+            }
+            return a.getKey().compareTo(b.getKey());
+        });
+        
+        for (Map.Entry<String, Integer> entry : leaderboard) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+    }
+    
+    private static void handlePlantSequence(Scanner scanner) {
+        int n = Integer.parseInt(scanner.nextLine().trim());
+        String[] heightStrings = scanner.nextLine().trim().split(" ");
+        int[] heights = new int[n];
+        
+        for (int i = 0; i < n; i++) {
+            heights[i] = Integer.parseInt(heightStrings[i]);
+        }
+        
+        int longestLength = findLongestIncreasingSubsequence(heights);
+        System.out.println(longestLength);
+    }
+    
+    private static int findLongestIncreasingSubsequence(int[] arr) {
+        if (arr.length == 0) return 0;
+        
+        int[] dp = new int[arr.length];
+        Arrays.fill(dp, 1);
+        
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (arr[j] < arr[i]) {
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
+                }
+            }
+        }
+        
+        int maxLength = 0;
+        for (int length : dp) {
+            maxLength = Math.max(maxLength, length);
+        }
+        
+        return maxLength;
+    }
+    
+    private static void handleRotateSchedule(Scanner scanner) {
+        String line = scanner.nextLine().trim();
+        String[] plants = line.split(" ");
+        
+        if (plants.length == 0) {
+            return;
+        }
+        
+        String[] rotated = new String[plants.length];
+        rotated[0] = plants[plants.length - 1];
+        
+        for (int i = 0; i < plants.length - 1; i++) {
+            rotated[i + 1] = plants[i];
+        }
+        
+        System.out.println(String.join(" ", rotated));
+    }
+}
+
+Create a program that manages three aspects of a community botanical garden. Your program will receive a command type followed by relevant data, then perform the requested operation.
+
+For LEADERBOARD: Track volunteer scores by processing a series of actions that add points to volunteers. Display the top scorers sorted by points (highest first), with ties broken alphabetically by name.
+
+For PLANT_SEQUENCE: Given a row of plants with different heights, find the length of the longest subsequence where heights are in increasing order. The plants don't need to be consecutive—you're finding the longest possible chain.
+
+For ROTATE_SCHEDULE: Shift a plant care schedule by moving each plant one position to the right, with the last plant wrapping to the front.
