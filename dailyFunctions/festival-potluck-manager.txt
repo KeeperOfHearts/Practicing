@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read the comma-separated list of dish names
+        String input = scanner.nextLine();
+        
+        // Split the input into individual dishes
+        String[] dishes = input.split(",");
+        int sum = 0;
+        // TODO: For each dish, calculate its hash value by summing ASCII values of all characters
+        for (int i = 0;i < dishes.length;i++) {
+            String dish = dishes[i];
+            // Hint: You can use charAt() to get each character and cast it to int for ASCII value
+            int sumDish = 0;
+            for (char c : dish.toCharArray()) sumDish += (int) c;
+            // TODO: Print each dish with its hash value in format: "DishName: hashValue"
+            System.out.println(dish + ": " + sumDish);
+            if (i == 0) sum += sumDish;
+            if ( i == dishes.length-1) sum += sumDish;
+            // TODO: Calculate festival capacity by adding hash values of first and last dishes
+        }
+        // TODO: Print the festival capacity
+        System.out.println("Festival Capacity: " + sum);
+        
+        scanner.close();
+    }
+}
+
+Create a program that assigns serving stations to potluck dishes at the community festival. Read a comma-separated list of dish names, then calculate a simple hash for each dish by summing all its character ASCII values.
+
+Print each dish with its hash value, then calculate the festival capacity by adding the hash values of the first and last dishes.
