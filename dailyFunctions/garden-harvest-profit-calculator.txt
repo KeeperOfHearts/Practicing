@@ -1,0 +1,22 @@
+class CalculateGardenProfit {
+    public static float calculateGardenProfit(String membershipLevel, float harvestWeight, float totalCosts) {
+        float pricePerPound = 0.0f;
+        
+        if (membershipLevel.equals("Basic")) {
+            pricePerPound = 3.50f;
+        } else if (membershipLevel.equals("Premium")) {
+            pricePerPound = 4.50f;
+        } else if (membershipLevel.equals("Lifetime")) {
+            pricePerPound = 5.00f;
+        }
+        
+        float totalRevenue = harvestWeight * pricePerPound;
+        float netProfit = totalRevenue - totalCosts;
+        
+        return netProfit;
+    }
+}
+
+Write a function calculateGardenProfit that takes a membership level (string), harvest weight in pounds (float), and total costs (float), then returns the net profit.
+
+Membership levels determine the price per pound: "Basic" members get $3.50/lb, "Premium" members get $4.50/lb, and "Lifetime" members get $5.00/lb. Calculate the total revenue (weight × price per pound), then subtract the costs to get the profit.
