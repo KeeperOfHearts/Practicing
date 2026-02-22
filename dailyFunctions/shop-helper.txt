@@ -1,0 +1,72 @@
+class ShopHelper {
+    public static String shopHelper(String taskType, String input1, String input2, String input3) {
+        if (taskType.equals("unique_labels")) {
+            return uniqueLabels(input1);
+        } else if (taskType.equals("popularity_digits")) {
+            return popularityDigits(input1, input2, input3);
+        } else if (taskType.equals("calorie_needs")) {
+            return calorieNeeds(input1, input2);
+        }
+        return "";
+    }
+    
+    private static String uniqueLabels(String labels) {
+        if (labels.isEmpty()) {
+            return "";
+        }
+        
+        String[] words = labels.split(" ");
+        java.util.Map<String, Integer> wordCount = new java.util.LinkedHashMap<>();
+        
+        for (String word : words) {
+            wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
+        }
+        
+        java.util.List<String> uniqueWords = new java.util.ArrayList<>();
+        for (java.util.Map.Entry<String, Integer> entry : wordCount.entrySet()) {
+            if (entry.getValue() == 1) {
+                uniqueWords.add(entry.getKey());
+            }
+        }
+        
+        return String.join(" ", uniqueWords);
+    }
+    
+    private static String popularityDigits(String baseStr, String exponentStr, String kStr) {
+        int base = Integer.parseInt(baseStr);
+        int exponent = Integer.parseInt(exponentStr);
+        int k = Integer.parseInt(kStr);
+        
+        java.math.BigInteger result = java.math.BigInteger.valueOf(base).pow(exponent);
+        String resultStr = result.toString();
+        
+        String firstKDigits = resultStr.substring(0, Math.min(k, resultStr.length()));
+        return String.valueOf(Integer.parseInt(firstKDigits));
+    }
+    
+    private static String calorieNeeds(String weightStr, String activityLevel) {
+        int weight = Integer.parseInt(weightStr);
+        int multiplier;
+        
+        if (activityLevel.equals("low")) {
+            multiplier = 24;
+        } else if (activityLevel.equals("medium")) {
+            multiplier = 30;
+        } else {
+            multiplier = 35;
+        }
+        
+        int calories = weight * multiplier;
+        return String.valueOf(calories);
+    }
+}
+
+Write a function shopHelper that takes a task type and corresponding inputs to help manage your botanical garden gift shop.
+
+The function handles three different tasks:
+
+    "unique_labels" - Given a string of space-separated product labels (like "Millettia carnauba Millettia prunifera"), return a string of words that appear exactly once, in order of first appearance.
+    "popularity_digits" - Given three integers (base, exponent, k), calculate base^exponent and return the first k digits as an integer. For example, if 2^10 = 1024 and k=2, return 10.
+    "calorie_needs" - Given weight in kg (integer) and activity level ("low", "medium", or "high"), return daily calorie needs as an integer. Use: weight × 24 for low, weight × 30 for medium, weight × 35 for high.
+
+Your function receives the task type as the first parameter, followed by the specific inputs for that task.
