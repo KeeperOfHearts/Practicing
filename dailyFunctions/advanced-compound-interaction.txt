@@ -1,0 +1,73 @@
+import java.util.Arrays;
+
+class AnalyzeCompoundInteraction {
+    public static float analyzeCompoundInteraction(int compoundStructure, float[] concentrationLevels, int experimentDuration) {
+        final double E = Math.E;
+        final double PI = Math.PI;
+
+        // Decode compound structure
+        int molecularWeight = compoundStructure & 0xFF;
+        int polarity = (compoundStructure >> 8) & 0xF;
+        int reactivity = (compoundStructure >> 12) & 0xF;
+
+        // Model interaction over time
+        double timeEffect = Math.sin(experimentDuration / 365.0 * 2 * PI) + Math.cos(experimentDuration / 365.0 * PI);
+
+        // Simulate chemical reactions
+        int reactionProduct = ((compoundStructure << 2) ^ (compoundStructure >> 2)) & 0xFFFF;
+
+        // Model growth/decay
+        double growthFactor = Math.log(1 + experimentDuration) / Math.log(366);
+
+        // Custom algorithm using XOR
+        int mixedProperties = molecularWeight ^ polarity ^ reactivity;
+
+        // Calculate stability using GCD
+        int stability = gcd(molecularWeight, mixedProperties);
+
+        // Calculate interaction score
+        double rawScore = 0;
+        for (float concentration : concentrationLevels) {
+            rawScore += concentration * reactionProduct * timeEffect * growthFactor * stability;
+        }
+
+        // Normalize score to 0-100 range
+        double normalizedScore = rawScore / (concentrationLevels.length * 65535 * 2 * Math.log(366) * 255) * 100;
+
+        // Ensure score is between 0 and 100
+        return (float) Math.max(0, Math.min(100, normalizedScore));
+    }
+
+    private static int gcd(int a, int b) {
+        if (b == 0) return a;
+        return gcd(b, a % b);
+    }
+}
+Create a function named analyzeCompoundInteraction that receives compoundStructure, concentrationLevels, and experimentDuration as its parameters.
+
+You are a scientist in a laboratory studying beer ingredients and plant compounds. Your task is to develop a Java function that simulates a complex scientific experiment analyzing the interaction between a compound and various beer ingredients over time.
+
+The function should perform the following operations:
+
+    Decode the compound structure using bitwise operations to extract information about its properties (molecular weight, polarity, reactivity).
+    Model the interaction between the compound and beer ingredients over time using mathematical constants (e, pi) and trigonometric functions (sin, cos).
+    Simulate chemical reactions and transformations using bitwise shifting and masking.
+    Model the growth or decay of certain compounds using logarithmic functions.
+    Implement a custom algorithm using bitwise XOR operations to mix and combine different properties of the compounds.
+    Determine the stability of the resulting mixture by calculating the greatest common divisor (GCD) of certain values.
+
+Use the following formulas and constants in your calculations:
+
+
+final double E = Math.E;
+final double PI = Math.PI;
+
+Parameters:
+
+    compoundStructure (int): A bitwise encoded compound structure. The last 8 bits represent the molecular weight (0-255), the next 4 bits represent polarity (0-15), and the next 4 bits represent reactivity (0-15).
+    concentrationLevels (float[]): An array of concentration levels for different ingredients. Each element is a value between 0.0 and 1.0.
+    experimentDuration (int): The number of days the experiment has been running (1-365).
+
+The function returns a float value representing the "compound interaction score" that quantifies the overall success of the experiment. This score should be between 0.0 and 100.0, where higher values indicate more successful interactions.
+
+Note: Ensure your implementation is deterministic and does not use any random functions, as the output needs to be consistent for the same input values.
