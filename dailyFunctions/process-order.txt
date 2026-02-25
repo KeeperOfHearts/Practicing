@@ -1,0 +1,42 @@
+class ProcessOrder {
+    public static String processOrder(String cart) {
+        if (cart.length() == 0) return "Please note our cover charge for today's event!";
+
+        char current = 'a';
+        int count = 0;
+
+        String result = "";
+
+        for (char c : cart.toCharArray()) {
+            if (c != current) {
+                switch (count) {
+                    case 0:
+                        break;
+                    case 1:
+                        result += current;
+                        break;
+                    default:
+                        result += current + "" + count;
+                }
+                current = c;
+                count = 0;
+            }
+            count += 1;
+        }
+
+        switch (count) {
+            case 1:
+                result += current;
+                break;
+            default:
+                result += current + "" + count;
+        }
+
+        return result;
+    }
+}
+
+
+Write a function processOrder that takes a customer's cart (as a string) and returns a summary of their order.
+
+If the cart is empty, return "Please note our cover charge for today's event!". Otherwise, compress any consecutive duplicate characters in the cart string by replacing them with the character followed by its count (e.g., "aaa" becomes "a3", "latte!!!" becomes "latte!3").
