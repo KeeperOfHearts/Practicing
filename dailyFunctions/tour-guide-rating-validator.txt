@@ -1,0 +1,78 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read the ratings line
+        String ratingsLine = scanner.nextLine();
+        String[] ratingStrings = ratingsLine.split(" ");
+        
+        // Read the attraction name
+        String attractionName = scanner.nextLine();
+        
+        // Read the character positions
+        String positionsLine = scanner.nextLine();
+        String[] positionStrings = positionsLine.split(" ");
+        int pos1 = Integer.parseInt(positionStrings[0]);
+        int pos2 = Integer.parseInt(positionStrings[1]);
+        
+        // Parse ratings and calculate sum
+        ArrayList<Integer> ratings = new ArrayList<>();
+        int sum = 0;
+        for (String ratingStr : ratingStrings) {
+            int rating = Integer.parseInt(ratingStr);
+            ratings.add(rating);
+            sum += rating;
+        }
+        
+        // Check if sum is divisible by 5 (verified)
+        boolean isVerified = (sum % 5 == 0);
+        System.out.println("Verified: " + isVerified);
+        
+        // Reorganize: move all zeros to the beginning
+        ArrayList<Integer> zeros = new ArrayList<>();
+        ArrayList<Integer> nonZeros = new ArrayList<>();
+        
+        for (int rating : ratings) {
+            if (rating == 0) {
+                zeros.add(rating);
+            } else {
+                nonZeros.add(rating);
+            }
+        }
+        
+        // Combine zeros first, then non-zeros
+        ArrayList<Integer> reorganized = new ArrayList<>();
+        reorganized.addAll(zeros);
+        reorganized.addAll(nonZeros);
+        
+        // Print reorganized ratings
+        System.out.print("Reorganized: ");
+        for (int i = 0; i < reorganized.size(); i++) {
+            System.out.print(reorganized.get(i));
+            if (i < reorganized.size() - 1) {
+                System.out.print(" ");
+            }
+        }
+        System.out.println();
+        
+        // Extract preview snippet using the two positions
+        String preview = "";
+        if (pos1 >= 0 && pos1 < attractionName.length()) {
+            preview += attractionName.charAt(pos1);
+        }
+        if (pos2 >= 0 && pos2 < attractionName.length()) {
+            preview += attractionName.charAt(pos2);
+        }
+        
+        System.out.println("Preview: " + preview);
+        
+        scanner.close();
+    }
+}
+
+Create a program that helps filter and organize tour guide ratings. Read a list of attraction ratings, check if their sum is divisible by 5 (meaning they're verified), then reorganize the list by moving all zero ratings to the beginning while keeping other ratings in order. Finally, extract a preview snippet from an attraction name using two character positions.
+
+Your program should output whether the ratings are verified, the reorganized rating list, and the extracted preview text.
