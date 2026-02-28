@@ -1,0 +1,67 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read the initial board
+        String board = scanner.nextLine();
+        
+        // Read the number of commands
+        int numCommands = Integer.parseInt(scanner.nextLine());
+        
+        // Process each command
+        for (int i = 0; i < numCommands; i++) {
+            String command = scanner.nextLine();
+            
+            if (command.startsWith("FIND ")) {
+                // Extract the keyword to find
+                String keyword = command.substring(5);
+                
+                // Find all positions where keyword appears (including overlapping)
+                ArrayList<Integer> positions = new ArrayList<>();
+                for (int j = 0; j <= board.length() - keyword.length(); j++) {
+                    if (board.substring(j, j + keyword.length()).equals(keyword)) {
+                        positions.add(j);
+                    }
+                }
+                
+                // Print the positions
+                if (positions.isEmpty()) {
+                    System.out.println();
+                } else {
+                    for (int k = 0; k < positions.size(); k++) {
+                        if (k > 0) {
+                            System.out.print(" ");
+                        }
+                        System.out.print(positions.get(k));
+                    }
+                    System.out.println();
+                }
+                
+            } else if (command.startsWith("POST ")) {
+                // Extract position and message
+                String[] parts = command.substring(5).split(" ", 2);
+                int position = Integer.parseInt(parts[0]);
+                String message = parts[1];
+                
+                // Overwrite the board starting at position
+                StringBuilder newBoard = new StringBuilder(board);
+                for (int j = 0; j < message.length() && position + j < newBoard.length(); j++) {
+                    newBoard.setCharAt(position + j, message.charAt(j));
+                }
+                board = newBoard.toString();
+            }
+        }
+        
+        // Print the final board state
+        System.out.println(board);
+        
+        scanner.close();
+    }
+}
+
+Create a program that manages a community bulletin board where you can search for announcements and post urgent messages that overwrite existing content.
+
+Your program reads an initial board (a string), then processes commands: FIND keyword should output all starting positions where the keyword appears on the board (including overlapping matches), and POST position message should overwrite the board starting at that position with the new message. After all commands, print the final board state.
