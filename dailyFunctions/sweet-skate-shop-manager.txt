@@ -1,0 +1,73 @@
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read number of candies
+        int numCandies = Integer.parseInt(scanner.nextLine());
+        
+        // Read candy catalog with popularity scores
+        String bestCandy = "";
+        int highestScore = -1;
+        
+        for (int i = 0; i < numCandies; i++) {
+            String candyLine = scanner.nextLine();
+            // Parse candy name and score
+            int lastSpace = candyLine.lastIndexOf(' ');
+            String candyName = candyLine.substring(0, lastSpace);
+            int score = Integer.parseInt(candyLine.substring(lastSpace + 1));
+            
+            if (score > highestScore) {
+                highestScore = score;
+                bestCandy = candyName;
+            }
+        }
+        
+        // Read customer preference (not used in logic, but read to consume input)
+        String preference = scanner.nextLine();
+        
+        // Read number of items in order
+        int numItems = Integer.parseInt(scanner.nextLine());
+        
+        // Read prices
+        String pricesLine = scanner.nextLine();
+        String[] priceStrings = pricesLine.split(" ");
+        double totalPrice = 0.0;
+        
+        for (String priceStr : priceStrings) {
+            totalPrice += Double.parseDouble(priceStr);
+        }
+        
+        // Read tax rate
+        double taxRate = Double.parseDouble(scanner.nextLine());
+        
+        // Calculate total with tax
+        double totalWithTax = totalPrice * (1 + taxRate);
+        
+        // Read promotional message/reservation string
+        String message = scanner.nextLine();
+        
+        // Read substring length N
+        int n = Integer.parseInt(scanner.nextLine());
+        
+        // Count distinct substrings of length N
+        Set<String> distinctSubstrings = new HashSet<>();
+        
+        for (int i = 0; i <= message.length() - n; i++) {
+            String substring = message.substring(i, i + n);
+            distinctSubstrings.add(substring);
+        }
+        
+        int distinctCount = distinctSubstrings.size();
+        
+        // Output results
+        System.out.println(bestCandy);
+        System.out.printf("%.2f%n", totalWithTax);
+        System.out.println(distinctCount);
+    }
+}
+
+Create a program that helps manage your roller-skating confectionary shop! Your program should recommend the best candy for a customer based on their skating preference and candy popularity scores, calculate their total order price including sales tax, and count how many distinct substrings of length N appear in a promotional message or reservation string.
+
+Read the candy catalog with popularity scores, the customer's preference, their order details with prices and tax rate, plus a text string and the substring length N to analyze.
