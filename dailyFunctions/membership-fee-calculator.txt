@@ -1,0 +1,14 @@
+class CalculateMembershipFee {
+    public static int calculateMembershipFee(String membershipLevel) {
+        return switch (membershipLevel) {
+            case "full" -> 500;
+            case "concession" -> 300;
+            case "audit" -> 150;
+            default -> 0;
+        };
+    }
+}
+
+Write a function calculateMembershipFee that takes a membership level (a string: "full", "concession", or "audit") and returns the corresponding tuition fee for the ten-week language school session.
+
+Use these rates: "full" costs 500, "concession" costs 300, and "audit" costs 150.
