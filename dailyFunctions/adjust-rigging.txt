@@ -1,0 +1,32 @@
+class AdjustRigging {
+    public static String adjustRigging(String rigging, int humidity) {
+        String adjustedRigging;
+        
+        if (humidity >= 50) {
+            adjustedRigging = rigging.toUpperCase();
+        } else {
+            adjustedRigging = rigging.toLowerCase();
+        }
+        
+        StringBuilder reversed = new StringBuilder(adjustedRigging);
+        return reversed.reverse().toString();
+    }
+}
+
+Create a function named adjustRigging that receives rigging and humidity as its parameters.
+
+The function simulates a sailor's response to changing weather conditions by manipulating a string representation of a boat's rigging. The sailor will tighten the rigging as the humidity increases, and loosen it as the humidity decreases.
+
+Follow these steps to implement the function:
+
+    If the humidity is greater than or equal to 50, convert all lowercase letters in the rigging string to uppercase.
+    If the humidity is less than 50, convert all uppercase letters in the rigging string to lowercase.
+    Reverse the order of the characters in the resulting string.
+    Return the final adjusted rigging string.
+
+Parameters:
+
+    rigging (String): A string representing the current state of the rigging (e.g., "aBcDeF").
+    humidity (int): An integer representing the current humidity level (0-100).
+
+The function returns a String representing the final adjusted rigging.
